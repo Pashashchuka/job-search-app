@@ -8,5 +8,11 @@
 }
 
 body {
-  background-color: var(--white-color);
+  background-color: var(--light-gray-color);
+  height: 100vh;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
 }

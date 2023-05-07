@@ -1,0 +1,149 @@
+.wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+  justify-content: center;
+  width: 100%;
+}
+
+.filterBlock {
+  background-color: var(--white-color);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  height: 360px;
+  margin-top: 40px;
+  padding: 20px;
+  width: 315px;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: row;
+  gap: 67px;
+  width: 100%;
+}
+
+.title {
+  color: var(--black-color);
+  font: var(--font-h3);
+}
+
+.resetBlock {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  margin-bottom: 32px;
+}
+
+.resetText {
+  color: var(--grey-color-500);
+  font: var(--font-text-3);
+}
+
+.closeImg {
+  height: 16px;
+  width: 16px;
+}
+
+.industryBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  color: var(--black-color);
+  font: var(--font-h4);
+}
+
+.industryBtn {
+  align-items: center;
+  background: none;
+  border: 1px solid var(--grey-color-300);
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--grey-color-500);
+  display: flex;
+  flex-direction: row;
+  font: var(--font-text-3);
+  justify-content: space-between;
+  height: 42px;
+  padding: 0 12px;
+  width: 275px;
+}
+
+.arrow {
+  height: 6px;
+  transition: all 0.3s ease-in-out;
+  width: 14px;
+
+  &.active {
+    transform: rotate(180deg);
+  }
+}
+
+.salaryBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.salaryWrapper {
+  position: relative;
+}
+
+.salary {
+  border: 1px solid var(--grey-color-300);
+  border-radius: 8px;
+  font: var(--font-text-3);
+  font-weight: 400;
+  height: 42px;
+  padding: 0 12px;
+  width: 275px;
+
+  &::placeholder {
+    color: var(--grey-color-500);
+  }
+}
+
+.arrowBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  left: 92%;
+  position: absolute;
+  top: 30%;
+}
+
+.arrowDown,
+.arrowUp {
+  cursor: pointer;
+  height: 5px;
+  width: 9px;
+}
+
+.arrowUp {
+  transform: rotate(180deg);
+}
+
+.filterButton {
+  background-color: var(--light-blue-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--white-color);
+  font: var(--font-text-3);
+  height: 40px;
+  transition: all 0.5s ease-in-out;
+  width: 275px;
+
+  &:hover {
+    transform: scale(0.95);
+  }
+}

@@ -3,6 +3,8 @@
 :root {
   --light-gray-color: #f7f7f8;
   --light-blue-color: #5e96fc;
+  --grey-color-500: #acadb9;
+  --grey-color-300: #d5d6dc;
   --white-color: #ffffff;
   --black-color: #232134;
 
@@ -10,8 +12,10 @@
   --font-family-inter: 'Inter', normal;
 
   --font-h1: 600 64px var(--font-family-poppins);
+  --font-h3: 700 20px var(--font-family-inter);
+  --font-h4: 700 16px var(--font-family-inter);
 
   --font-text-1: 600 24px var(--font-family-poppins);
   --font-text-2: 400 16px var(--font-family-inter);
-  --font-text-3: 500 16px var(--font-family-inter);
+  --font-text-3: 500 14px var(--font-family-inter);
 }

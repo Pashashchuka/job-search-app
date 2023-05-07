@@ -10,7 +10,7 @@ const Header: FC = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.logoBlock}>
-        <img className={styles.logoImg} src={logo} alt="" />
+        <img className={styles.logoImg} src={logo} alt="logo" />
         <h3 className={styles.logoTitle}>Jobored</h3>
       </div>
       <nav>

@@ -41,11 +41,13 @@
 
   &.active {
     color: var(--light-blue-color);
-    font: var(--font-text-3);
+    font: var(--font-text-2);
+    font-weight: 500;
   }
 
   &:active {
     color: var(--light-blue-color);
-    font: var(--font-text-3);
+    font: var(--font-text-2);
+    font-weight: 500;
   }
 }
