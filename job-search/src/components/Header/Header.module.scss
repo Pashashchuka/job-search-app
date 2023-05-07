@@ -1,0 +1,51 @@
+.wrapper {
+  align-items: center;
+  background-color: var(--white-color);
+  display: flex;
+  flex-direction: row;
+  height: 84px;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.logoBlock {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  left: 157px;
+  position: absolute;
+  top: 24px;
+}
+
+.logoImg {
+  height: 30px;
+  width: 30px;
+}
+
+.logoText {
+  color: var(--black-color);
+  font: var(--font-text-1);
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+}
+
+.link {
+  color: var(--black-color);
+  font: var(--font-text-2);
+  text-decoration: none;
+
+  &.active {
+    color: var(--light-blue-color);
+    font: var(--font-text-3);
+  }
+
+  &:active {
+    color: var(--light-blue-color);
+    font: var(--font-text-3);
+  }
+}
