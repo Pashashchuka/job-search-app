@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import search from 'assets/icons/search.svg'
 import close from 'assets/icons/close.svg'
 import arrow from 'assets/icons/down.svg'
 
@@ -45,7 +46,19 @@ const SearchPage: FC = () => {
           </div>
           <button className={styles.filterButton}>Применить</button>
         </div>
-        <div className={styles.searchBlock}></div>
+        <div className={styles.searchBlock}>
+          <div className={styles.searchWrapper}>
+            <div className={styles.inputBlock}>
+              <img className={styles.searchIcon} src={search} alt="searchIcon" />
+              <input
+                className={styles.search}
+                type="text"
+                placeholder="Введите название вакансии"
+              />
+            </div>
+            <button className={styles.findButton}>Поиск</button>
+          </div>
+        </div>
       </div>
     </Layout>
   )
