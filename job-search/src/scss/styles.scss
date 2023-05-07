@@ -2,17 +2,10 @@
 
 * {
   box-sizing: border-box;
-  font-family: var(--font-family-poppins);
   margin: 0;
   padding: 0;
 }
 
 body {
   background-color: var(--light-gray-color);
-  height: 100vh;
-}
-
-#root {
-  height: 100%;
-  width: 100%;
 }

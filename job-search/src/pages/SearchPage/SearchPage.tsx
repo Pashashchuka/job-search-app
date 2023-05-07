@@ -4,6 +4,7 @@ import search from 'assets/icons/search.svg'
 import close from 'assets/icons/close.svg'
 import arrow from 'assets/icons/down.svg'
 
+import Vacancy from 'components/Vacancy'
 import Layout from 'components/Layout'
 
 import styles from './SearchPage.module.scss'
@@ -49,7 +50,11 @@ const SearchPage: FC = () => {
         <div className={styles.searchBlock}>
           <div className={styles.searchWrapper}>
             <div className={styles.inputBlock}>
-              <img className={styles.searchIcon} src={search} alt="searchIcon" />
+              <img
+                className={styles.searchIcon}
+                src={search}
+                alt="searchIcon"
+              />
               <input
                 className={styles.search}
                 type="text"
@@ -57,6 +62,12 @@ const SearchPage: FC = () => {
               />
             </div>
             <button className={styles.findButton}>Поиск</button>
+          </div>
+          <div className={styles.vacancyWrapper}>
+            <Vacancy />
+            <Vacancy />
+            <Vacancy />
+            <Vacancy />
           </div>
         </div>
       </div>

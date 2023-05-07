@@ -10,6 +10,7 @@
 }
 
 .logoBlock {
+  align-items: center;
   display: flex;
   flex-direction: row;
   gap: 8px;
@@ -23,7 +24,7 @@
   width: 30px;
 }
 
-.logoText {
+.logoTitle {
   color: var(--black-color);
   font: var(--font-text-1);
 }
