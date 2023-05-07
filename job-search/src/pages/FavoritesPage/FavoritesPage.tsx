@@ -1,7 +1,9 @@
 import { FC } from 'react'
 
+import Layout from 'components/Layout'
+
 const FavoritesPage: FC = () => {
-  return <div>FavoritesPage</div>
+  return <Layout>FavoritesPage</Layout>
 }
 
 export default FavoritesPage
