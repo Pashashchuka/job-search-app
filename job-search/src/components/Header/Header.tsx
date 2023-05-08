@@ -7,6 +7,8 @@ import logo from 'assets/icons/logo.svg'
 import styles from './Header.module.scss'
 
 const Header: FC = () => {
+  const currentPath = window.location.pathname
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.logoBlock}>
@@ -15,10 +17,20 @@ const Header: FC = () => {
       </div>
       <nav>
         <ul className={styles.nav}>
-          <a className={styles.link} href={PATHS.SEARCH}>
+          <a
+            className={
+              currentPath === PATHS.SEARCH ? styles.activeLink : styles.link
+            }
+            href={PATHS.SEARCH}
+          >
             Поиск Вакансий
           </a>
-          <a className={styles.link} href={PATHS.FAVORITES}>
+          <a
+            className={
+              currentPath === PATHS.FAVORITES ? styles.activeLink : styles.link
+            }
+            href={PATHS.FAVORITES}
+          >
             Избранное
           </a>
         </ul>

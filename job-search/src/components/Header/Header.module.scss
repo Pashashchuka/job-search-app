@@ -40,15 +40,16 @@
   font: var(--font-text-2);
   text-decoration: none;
 
-  &.active {
-    color: var(--light-blue-color);
-    font: var(--font-text-2);
-    font-weight: 500;
-  }
-
   &:active {
     color: var(--light-blue-color);
     font: var(--font-text-2);
     font-weight: 500;
   }
+}
+
+.activeLink {
+  color: var(--light-blue-color);
+  font: var(--font-text-2);
+  font-weight: 500;
+  text-decoration: none;
 }
