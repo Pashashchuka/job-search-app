@@ -241,6 +241,12 @@
   background-color: var(--white-color);
   border: 1px solid var(--grey-color-200);
   cursor: pointer;
+
+  &:active {
+    background-color: var(--light-blue-color);
+    border: none;
+    color: var(--white-color);
+  }
 }
 
 .prevIcon {
