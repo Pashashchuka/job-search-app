@@ -5,6 +5,7 @@ import close from 'assets/icons/close.svg'
 import arrow from 'assets/icons/down.svg'
 
 import Vacancy from 'components/Vacancy'
+import Button from 'components/Button'
 import Layout from 'components/Layout'
 
 import styles from './SearchPage.module.scss'
@@ -45,7 +46,7 @@ const SearchPage: FC = () => {
               </div>
             </div>
           </div>
-          <button className={styles.filterButton}>Применить</button>
+          <Button className={styles.filterButton} content="Применить" />
         </div>
         <div className={styles.searchBlock}>
           <div className={styles.searchWrapper}>
@@ -61,7 +62,7 @@ const SearchPage: FC = () => {
                 placeholder="Введите название вакансии"
               />
             </div>
-            <button className={styles.findButton}>Поиск</button>
+            <Button className={styles.findButton} content="Поиск" />
           </div>
           <div className={styles.vacancyWrapper}>
             <Vacancy />

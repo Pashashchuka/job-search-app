@@ -3,6 +3,7 @@ import { FC } from 'react'
 import person from 'assets/icons/person.svg'
 
 import Layout from 'components/Layout'
+import Button from 'components/Button'
 
 import { useFavoritesPage } from './hooks'
 
@@ -17,9 +18,11 @@ const FavoritesPage: FC = () => {
         <div className={styles.block}>
           <img className={styles.person} src={person} alt="person" />
           <h2 className={styles.title}>Упс, здесь еще ничего нет!</h2>
-          <button className={styles.button} onClick={handleClick}>
-            Поиск Вакансий
-          </button>
+          <Button
+            className={styles.button}
+            handleClick={handleClick}
+            content="Поиск Вакансий"
+          />
         </div>
       </div>
     </Layout>
