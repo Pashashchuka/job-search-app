@@ -66,9 +66,6 @@ const SearchPage: FC = () => {
           </div>
           <div className={styles.vacancyWrapper}>
             <Vacancy />
-            <Vacancy />
-            <Vacancy />
-            <Vacancy />
           </div>
           <div className={styles.pagination}>
             <button className={styles.arrowBtn}>
