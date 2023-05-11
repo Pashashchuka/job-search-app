@@ -8,9 +8,13 @@ import Vacancy from 'components/Vacancy'
 import Button from 'components/Button'
 import Layout from 'components/Layout'
 
+import { useSearchPage } from './hooks'
+
 import styles from './SearchPage.module.scss'
 
 const SearchPage: FC = () => {
+  const { vacancies } = useSearchPage()
+
   return (
     <Layout>
       <div className={styles.wrapper}>
@@ -65,7 +69,27 @@ const SearchPage: FC = () => {
             <Button className={styles.findButton} content="Поиск" />
           </div>
           <div className={styles.vacancyWrapper}>
-            <Vacancy />
+            {vacancies.map(
+              ({
+                id,
+                profession,
+                payment_from,
+                payment_to,
+                currency,
+                town,
+                type_of_work,
+              }) => (
+                <Vacancy
+                  key={id}
+                  profession={profession}
+                  salaryFrom={payment_from}
+                  salaryTo={payment_to}
+                  location={town.title}
+                  schedule={type_of_work.title}
+                  currency={currency}
+                />
+              ),
+            )}
           </div>
           <div className={styles.pagination}>
             <button className={styles.arrowBtn}>

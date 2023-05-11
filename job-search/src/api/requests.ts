@@ -1,9 +1,10 @@
 import axios from 'axios'
 
-import { TGetAccessToken } from './types'
+import { TGetAccessToken, TGetAllVacancies } from './types'
 
-export const BASE_URL = 'https://startup-summer-2023-proxy.onrender.com/2.0'
-export const AUTHZ_URL = `${BASE_URL}/oauth2/password`
+const BASE_URL = 'https://startup-summer-2023-proxy.onrender.com/2.0'
+const AUTHZ_URL = `${BASE_URL}/oauth2/password`
+const VAC_URL = `${BASE_URL}/vacancies/`
 
 const secretKey = process.env.REACT_APP_X_SECRET_KEY
 
@@ -25,6 +26,20 @@ export const getAccessToken: TGetAccessToken = async () => {
     localStorage.setItem('acess_token', JSON.stringify(data.access_token))
 
     return data.access_token
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+export const getAllVacancies: TGetAllVacancies = async () => {
+  try {
+    const { data } = await axios.get(`${VAC_URL}`, {
+      headers: {
+        'x-secret-key': secretKey,
+        'X-Api-App-Id': clientSecret,
+      },
+    })
+    return data.objects
   } catch (error) {
     throw new Error(error)
   }

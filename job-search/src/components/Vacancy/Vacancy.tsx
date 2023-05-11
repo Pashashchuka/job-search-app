@@ -7,23 +7,44 @@ import styles from './Vacancy.module.scss'
 
 interface IVacancyProps {
   profession?: string
-  salary?: number
+  salaryFrom?: number
+  salaryTo?: number
   schedule?: string
   location?: string
+  currency?: string
 }
 
 const Vacancy: FC<IVacancyProps> = ({
   profession,
-  salary,
+  salaryFrom,
+  salaryTo,
   schedule,
   location,
+  currency,
 }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.vacancyBlock}>
         <h2 className={styles.title}>{profession}</h2>
         <div className={styles.infoBlock}>
-          <h5 className={styles.salary}>з/п от {salary} rub</h5>
+          {salaryFrom === 0 && salaryTo === 0 && (
+            <h5 className={styles.salary}>з/п не указана</h5>
+          )}
+          {salaryFrom === 0 && salaryTo !== 0 && (
+            <h5 className={styles.salary}>
+              з/п до {salaryTo} {currency}
+            </h5>
+          )}
+          {salaryFrom !== 0 && salaryTo === 0 && (
+            <h5 className={styles.salary}>
+              з/п от {salaryFrom} {currency}
+            </h5>
+          )}
+          {salaryFrom !== 0 && salaryTo !== 0 && (
+            <h5 className={styles.salary}>
+              з/п {salaryFrom} - {salaryTo} {currency}
+            </h5>
+          )}
           <div className={styles.dot}></div>
           <p className={styles.type}>{schedule}</p>
         </div>
