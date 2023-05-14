@@ -16,3 +16,6 @@ export interface IVacancy {
 export type TGetAccessToken = () => Promise<string>
 
 export type TGetAllVacancies = () => Promise<IVacancy[]>
+
+export type TGetVacancy = (id: string) => Promise<IVacancy>
+

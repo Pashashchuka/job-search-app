@@ -23,6 +23,7 @@ export const useSearchPage = () => {
   }, [])
 
   const handleVacancyClick = (id: number) => {
+    localStorage.setItem('vacancyId', JSON.stringify(id))
     navigate(`${PATHS.VACANCIES}/${id}`)
   }
 
