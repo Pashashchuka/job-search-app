@@ -8,12 +8,14 @@ export const useSearchPage = () => {
 
   useEffect(() => {
     setIsLoading(true)
+
     const fetchData = async () => {
       const response = await getAllVacancies()
       setVacancies(response)
+      setIsLoading(false)
     }
+    
     fetchData()
-    setIsLoading(false)
   }, [])
 
   return {

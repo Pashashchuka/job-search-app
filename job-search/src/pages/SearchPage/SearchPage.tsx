@@ -69,44 +69,54 @@ const SearchPage: FC = () => {
             </div>
             <Button className={styles.findButton} content="Поиск" />
           </div>
-          <div className={styles.vacancyWrapper}>
-            {isLoading ? (
-              <Loader />
-            ) : (
-              vacancies.map(
-                ({
-                  id,
-                  profession,
-                  payment_from,
-                  payment_to,
-                  currency,
-                  town,
-                  type_of_work,
-                }) => (
-                  <Vacancy
-                    key={id}
-                    profession={profession}
-                    salaryFrom={payment_from}
-                    salaryTo={payment_to}
-                    location={town.title}
-                    schedule={type_of_work.title}
-                    currency={currency}
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <>
+              <div className={styles.vacancyWrapper}>
+                {vacancies.map(
+                  ({
+                    id,
+                    profession,
+                    payment_from,
+                    payment_to,
+                    currency,
+                    town,
+                    type_of_work,
+                  }) => (
+                    <Vacancy
+                      key={id}
+                      profession={profession}
+                      salaryFrom={payment_from}
+                      salaryTo={payment_to}
+                      location={town.title}
+                      schedule={type_of_work.title}
+                      currency={currency}
+                    />
+                  ),
+                )}
+              </div>
+              <div className={styles.pagination}>
+                <button className={styles.arrowBtn}>
+                  <img
+                    className={styles.prevIcon}
+                    src={arrow}
+                    alt="arrowPrev"
                   />
-                ),
-              )
-            )}
-          </div>
-          <div className={styles.pagination}>
-            <button className={styles.arrowBtn}>
-              <img className={styles.prevIcon} src={arrow} alt="arrowPrev" />
-            </button>
-            <button className={styles.pageBtn}>1</button>
-            <button className={styles.pageBtn}>2</button>
-            <button className={styles.pageBtn}>3</button>
-            <button className={styles.arrowBtn}>
-              <img className={styles.nextIcon} src={arrow} alt="arrowNext" />
-            </button>
-          </div>
+                </button>
+                <button className={styles.pageBtn}>1</button>
+                <button className={styles.pageBtn}>2</button>
+                <button className={styles.pageBtn}>3</button>
+                <button className={styles.arrowBtn}>
+                  <img
+                    className={styles.nextIcon}
+                    src={arrow}
+                    alt="arrowNext"
+                  />
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </Layout>
