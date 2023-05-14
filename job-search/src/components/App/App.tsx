@@ -1,19 +1,20 @@
-import { FC } from 'react'
-import { Provider } from 'react-redux'
+import { FC, useEffect } from 'react'
 
 import { getAccessToken } from 'api'
-
-import store from 'store'
 
 import Router from 'router'
 
 const App: FC = () => {
-  getAccessToken()
+  
+  useEffect(() => {
+    const fetchAccessToken = async () => {
+      const token = await getAccessToken()
 
-  return (
-    <Provider store={store}>
-      <Router />
-    </Provider>
-  )
+      localStorage.setItem('acess_token', JSON.stringify(token))
+    }
+    fetchAccessToken()
+  }, [])
+
+  return <Router />
 }
 export default App

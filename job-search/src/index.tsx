@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
+import Loader from 'components/Loader'
 import App from 'components/App'
 
 import 'scss/styles.scss'
@@ -11,6 +12,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App />
+    <React.Suspense fallback={<Loader />}>
+      <App />
+    </React.Suspense>
   </React.StrictMode>,
 )

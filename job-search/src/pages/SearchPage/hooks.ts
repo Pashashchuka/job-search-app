@@ -1,20 +1,23 @@
-import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
 
-import { getAllVacanciesSelector } from 'store/selectors'
-import { fetchAllVacancies } from 'store/actions'
-import { useAppDispatch } from 'store'
+import { getAllVacancies, IVacancy } from 'api'
 
 export const useSearchPage = () => {
-  const dispatch = useAppDispatch()
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [vacancies, setVacancies] = useState<IVacancy[]>([])
 
   useEffect(() => {
-    dispatch(fetchAllVacancies())
-  }, [dispatch])
-
-  const vacancies = useSelector(getAllVacanciesSelector)
+    setIsLoading(true)
+    const fetchData = async () => {
+      const response = await getAllVacancies()
+      setVacancies(response)
+    }
+    fetchData()
+    setIsLoading(false)
+  }, [])
 
   return {
     vacancies,
+    isLoading,
   }
 }

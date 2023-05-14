@@ -20,11 +20,10 @@ export const getAccessToken: TGetAccessToken = async () => {
       {
         headers: {
           'x-secret-key': secretKey,
+          'X-Api-App-Id': clientSecret,
         },
       },
     )
-    localStorage.setItem('acess_token', JSON.stringify(data.access_token))
-
     return data.access_token
   } catch (error) {
     throw new Error(error)

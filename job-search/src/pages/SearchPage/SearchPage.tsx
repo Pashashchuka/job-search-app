@@ -7,13 +7,14 @@ import arrow from 'assets/icons/down.svg'
 import Vacancy from 'components/Vacancy'
 import Button from 'components/Button'
 import Layout from 'components/Layout'
+import Loader from 'components/Loader'
 
 import { useSearchPage } from './hooks'
 
 import styles from './SearchPage.module.scss'
 
 const SearchPage: FC = () => {
-  const { vacancies } = useSearchPage()
+  const { vacancies, isLoading } = useSearchPage()
 
   return (
     <Layout>
@@ -69,26 +70,30 @@ const SearchPage: FC = () => {
             <Button className={styles.findButton} content="Поиск" />
           </div>
           <div className={styles.vacancyWrapper}>
-            {vacancies.map(
-              ({
-                id,
-                profession,
-                payment_from,
-                payment_to,
-                currency,
-                town,
-                type_of_work,
-              }) => (
-                <Vacancy
-                  key={id}
-                  profession={profession}
-                  salaryFrom={payment_from}
-                  salaryTo={payment_to}
-                  location={town.title}
-                  schedule={type_of_work.title}
-                  currency={currency}
-                />
-              ),
+            {isLoading ? (
+              <Loader />
+            ) : (
+              vacancies.map(
+                ({
+                  id,
+                  profession,
+                  payment_from,
+                  payment_to,
+                  currency,
+                  town,
+                  type_of_work,
+                }) => (
+                  <Vacancy
+                    key={id}
+                    profession={profession}
+                    salaryFrom={payment_from}
+                    salaryTo={payment_to}
+                    location={town.title}
+                    schedule={type_of_work.title}
+                    currency={currency}
+                  />
+                ),
+              )
             )}
           </div>
           <div className={styles.pagination}>
