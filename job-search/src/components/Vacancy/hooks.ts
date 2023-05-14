@@ -5,6 +5,7 @@ import { IVacancy } from 'api'
 export const useVacancy = () => {
   const [isFillStar, setIsFillStar] = useState<boolean>(false)
   const [isDefaultStar, setIsDefaultStar] = useState<boolean>(true)
+  const [isHiddenVacancy, setIsHiddenVacancy] = useState<boolean>(false)
 
   const handleStarClick = (vacancy: IVacancy) => {
     const favVacancies = JSON.parse(localStorage.getItem('favVacancies')) || []
@@ -28,12 +29,14 @@ export const useVacancy = () => {
 
     localStorage.setItem('favVacancies', JSON.stringify(filteredFavVacancies))
     setIsDefaultStar(true)
+    setIsHiddenVacancy(true)
     setIsFillStar(false)
   }
 
   return {
     isFillStar,
     isDefaultStar,
+    isHiddenVacancy,
     handleStarClick,
     handleFillStarClick,
   }
