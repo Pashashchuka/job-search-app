@@ -1,8 +1,8 @@
 import { FC } from 'react'
 
 import FavoritesPage from 'pages/FavoritesPage'
+import VacanciesPage from 'pages/VacanciesPage'
 import VacancyPage from 'pages/VacancyPage'
-import SearchPage from 'pages/SearchPage'
 import ErrorPage from 'pages/ErrorPage'
 
 import { PATHS } from './paths'
@@ -15,7 +15,7 @@ interface Routes {
 export const ROUTES: Routes[] = [
   {
     path: PATHS.VACANCIES,
-    component: SearchPage,
+    component: VacanciesPage,
   },
   {
     path: PATHS.ERROR,

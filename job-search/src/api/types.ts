@@ -12,6 +12,7 @@ export interface IVacancy {
   currency: string
   id: number
   vacancyRichText?: string
+  isFillStar: boolean
 }
 
 export type TGetAccessToken = () => Promise<string>

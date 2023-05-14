@@ -11,9 +11,9 @@ import Loader from 'components/Loader'
 
 import { useSearchPage } from './hooks'
 
-import styles from './SearchPage.module.scss'
+import styles from './VacanciesPage.module.scss'
 
-const SearchPage: FC = () => {
+const VacanciesPage: FC = () => {
   const { vacancies, isLoading, handleVacancyClick } = useSearchPage()
 
   return (
@@ -109,4 +109,4 @@ const SearchPage: FC = () => {
   )
 }
 
-export default SearchPage
+export default VacanciesPage
