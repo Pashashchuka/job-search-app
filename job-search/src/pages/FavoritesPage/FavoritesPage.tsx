@@ -22,8 +22,8 @@ const FavoritesPage: FC = () => {
       <div className={styles.wrapper}>
         {favVacancies ? (
           <div className={styles.vacancyBlock}>
-            {favVacancies.map((vacancy: IVacancy) => (
-              <Vacancy key={vacancy.id} vacancy={vacancy} />
+            {favVacancies.map((vacancy: IVacancy, index: number) => (
+              <Vacancy key={index} vacancy={vacancy} />
             ))}
             <div className={styles.pagination}>
               <button className={styles.arrowBtn}>
