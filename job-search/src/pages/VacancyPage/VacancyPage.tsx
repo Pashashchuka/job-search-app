@@ -17,14 +17,20 @@ const VacancyPage: FC = () => {
         {isLoading ? (
           <Loader />
         ) : (
-          <SecondaryVacancy
-            profession={vacancy.profession}
-            salaryFrom={vacancy.payment_from}
-            salaryTo={vacancy.payment_to}
-            location={vacancy.town.title}
-            schedule={vacancy.type_of_work.title}
-            currency={vacancy.currency}
-          />
+          <>
+            <SecondaryVacancy
+              profession={vacancy.profession}
+              salaryFrom={vacancy.payment_from}
+              salaryTo={vacancy.payment_to}
+              location={vacancy.town.title}
+              schedule={vacancy.type_of_work.title}
+              currency={vacancy.currency}
+            />
+            <div
+              className={styles.block}
+              dangerouslySetInnerHTML={{ __html: vacancy.vacancyRichText }}
+            ></div>
+          </>
         )}
       </div>
     </Layout>
