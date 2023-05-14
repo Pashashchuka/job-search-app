@@ -6,6 +6,8 @@ import locationIcon from 'assets/icons/location.svg'
 import fillStar from 'assets/icons/fillStar.svg'
 import star from 'assets/icons/star.svg'
 
+import { useSecondaryVacancy } from './hooks'
+
 import styles from './SecondaryVacancy.module.scss'
 
 interface ISecondaryVacancyProps {
@@ -13,6 +15,8 @@ interface ISecondaryVacancyProps {
 }
 
 const SecondaryVacancy: FC<ISecondaryVacancyProps> = ({ vacancy }) => {
+  const { isFillStar, handleStarClick } = useSecondaryVacancy()
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.vacancyBlock}>
@@ -51,7 +55,8 @@ const SecondaryVacancy: FC<ISecondaryVacancyProps> = ({ vacancy }) => {
       </div>
       <img
         className={styles.starIcon}
-        src={vacancy.favorite ? fillStar : star}
+        src={vacancy.favorite || isFillStar ? fillStar : star}
+        onClick={() => handleStarClick(vacancy)}
         alt="star"
       />
     </div>
