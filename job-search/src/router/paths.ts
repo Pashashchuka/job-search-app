@@ -1,5 +1,6 @@
 export const PATHS = {
-  SEARCH: '/search',
+  VACANCIES: '/vacancies',
   FAVORITES: '/favorites',
+  VACANCY: '/:id',
   ERROR: '*',
 }

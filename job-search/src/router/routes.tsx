@@ -13,7 +13,7 @@ interface Routes {
 
 export const ROUTES: Routes[] = [
   {
-    path: PATHS.SEARCH,
+    path: PATHS.VACANCIES,
     component: SearchPage,
   },
   {

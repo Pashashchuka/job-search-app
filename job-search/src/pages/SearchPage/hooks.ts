@@ -14,7 +14,7 @@ export const useSearchPage = () => {
       setVacancies(response)
       setIsLoading(false)
     }
-    
+
     fetchData()
   }, [])
 

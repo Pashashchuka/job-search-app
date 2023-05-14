@@ -19,9 +19,9 @@ const Header: FC = () => {
         <ul className={styles.nav}>
           <a
             className={
-              currentPath === PATHS.SEARCH ? styles.activeLink : styles.link
+              currentPath === PATHS.VACANCIES ? styles.activeLink : styles.link
             }
-            href={PATHS.SEARCH}
+            href={PATHS.VACANCIES}
           >
             Поиск Вакансий
           </a>

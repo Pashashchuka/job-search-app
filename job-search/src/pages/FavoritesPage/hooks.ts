@@ -6,7 +6,7 @@ export const useFavoritesPage = () => {
   const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate(PATHS.SEARCH)
+    navigate(PATHS.VACANCIES)
   }
 
   return {

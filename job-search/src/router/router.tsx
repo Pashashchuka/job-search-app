@@ -8,7 +8,7 @@ const Router: FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate replace to={PATHS.SEARCH} />} />
+        <Route path="/" element={<Navigate replace to={PATHS.VACANCIES} />} />
         {ROUTES.map(({ path, component: Component }, index) => (
           <Route key={index} path={path} element={<Component />} />
         ))}
