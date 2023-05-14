@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import FavoritesPage from 'pages/FavoritesPage'
+import VacancyPage from 'pages/VacancyPage'
 import SearchPage from 'pages/SearchPage'
 import ErrorPage from 'pages/ErrorPage'
 
@@ -23,5 +24,9 @@ export const ROUTES: Routes[] = [
   {
     path: PATHS.FAVORITES,
     component: FavoritesPage,
+  },
+  {
+    path: `${PATHS.VACANCIES}/:id`,
+    component: VacancyPage,
   },
 ]

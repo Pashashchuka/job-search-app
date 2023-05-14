@@ -14,7 +14,7 @@ import { useSearchPage } from './hooks'
 import styles from './SearchPage.module.scss'
 
 const SearchPage: FC = () => {
-  const { vacancies, isLoading } = useSearchPage()
+  const { vacancies, isLoading, handleVacancyClick } = useSearchPage()
 
   return (
     <Layout>
@@ -92,6 +92,8 @@ const SearchPage: FC = () => {
                       location={town.title}
                       schedule={type_of_work.title}
                       currency={currency}
+                      handleVacancyClick={handleVacancyClick}
+                      id={id}
                     />
                   ),
                 )}

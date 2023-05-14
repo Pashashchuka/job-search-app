@@ -12,6 +12,8 @@ interface IVacancyProps {
   schedule?: string
   location?: string
   currency?: string
+  id?: number
+  handleVacancyClick?: (id: number) => void
 }
 
 const Vacancy: FC<IVacancyProps> = ({
@@ -21,9 +23,11 @@ const Vacancy: FC<IVacancyProps> = ({
   schedule,
   location,
   currency,
+  id,
+  handleVacancyClick,
 }) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} onClick={() => handleVacancyClick(id)}>
       <div className={styles.vacancyBlock}>
         <h2 className={styles.title}>{profession}</h2>
         <div className={styles.infoBlock}>

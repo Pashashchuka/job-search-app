@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { getAllVacancies, IVacancy } from 'api'
+import { PATHS } from 'router/paths'
 
 export const useSearchPage = () => {
+  const navigate = useNavigate()
+
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [vacancies, setVacancies] = useState<IVacancy[]>([])
 
@@ -18,8 +22,13 @@ export const useSearchPage = () => {
     fetchData()
   }, [])
 
+  const handleVacancyClick = (id: number) => {
+    navigate(`${PATHS.VACANCIES}/${id}`)
+  }
+
   return {
     vacancies,
     isLoading,
+    handleVacancyClick,
   }
 }
