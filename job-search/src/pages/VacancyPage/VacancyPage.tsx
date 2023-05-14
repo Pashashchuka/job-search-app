@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import SecondaryVacancy from 'components/SecondaryVacation'
+import SecondaryVacancy from 'components/SecondaryVacancy'
 import Layout from 'components/Layout'
 import Loader from 'components/Loader'
 
