@@ -14,15 +14,20 @@ import { useFavoritesPage } from './hooks'
 import styles from './FavoritesPage.module.scss'
 
 const FavoritesPage: FC = () => {
-  const { handleBtnClick, favVacancies, isEmptyArr } = useFavoritesPage()
+  const { handleBtnClick, handleVacancyClick, favVacancies } =
+    useFavoritesPage()
 
   return (
     <Layout>
       <div className={styles.wrapper}>
-        {!isEmptyArr ? (
+        {favVacancies.length && favVacancies ? (
           <div className={styles.vacancyBlock}>
             {favVacancies.map((vacancy: IVacancy, index: number) => (
-              <Vacancy key={index} vacancy={vacancy} />
+              <Vacancy
+                key={index}
+                vacancy={vacancy}
+                handleVacancyClick={handleVacancyClick}
+              />
             ))}
             <div className={styles.pagination}>
               <button className={styles.arrowBtn}>

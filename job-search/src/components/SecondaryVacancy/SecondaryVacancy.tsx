@@ -15,7 +15,8 @@ interface ISecondaryVacancyProps {
 }
 
 const SecondaryVacancy: FC<ISecondaryVacancyProps> = ({ vacancy }) => {
-  const { isFillStar, handleStarClick } = useSecondaryVacancy()
+  const { isFillStar, isDefaultStar, handleFillStarClick, handleStarClick } =
+    useSecondaryVacancy()
 
   return (
     <div className={styles.wrapper}>
@@ -55,9 +56,9 @@ const SecondaryVacancy: FC<ISecondaryVacancyProps> = ({ vacancy }) => {
       </div>
       <img
         className={
-          vacancy.favorite || isFillStar
-            ? styles.hiddenStarIcon
-            : styles.starIcon
+          !vacancy.favorite && isDefaultStar
+            ? styles.starIcon
+            : styles.hiddenStarIcon
         }
         src={star}
         onClick={(event) => {
@@ -68,13 +69,14 @@ const SecondaryVacancy: FC<ISecondaryVacancyProps> = ({ vacancy }) => {
       />
       <img
         className={
-          vacancy.favorite || isFillStar
+          vacancy.favorite && isFillStar
             ? styles.fillStarIcon
             : styles.hiddenStarIcon
         }
         src={fillStar}
         onClick={(event) => {
           event.stopPropagation()
+          handleFillStarClick(vacancy)
         }}
         alt="star"
       />

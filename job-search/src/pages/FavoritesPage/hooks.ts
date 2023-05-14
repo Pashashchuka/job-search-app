@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { IVacancy } from 'api'
@@ -8,30 +7,21 @@ import { PATHS } from 'router/paths'
 export const useFavoritesPage = () => {
   const navigate = useNavigate()
 
-  const [isEmptyArr, setIsEmptyArr] = useState<boolean>(true)
-  const favVacancies: IVacancy[] = JSON.parse(
-    localStorage.getItem('favVacancies'),
-  )
-
-  useEffect(() => {
-    const favVacancies: IVacancy[] = JSON.parse(
-      localStorage.getItem('favVacancies'),
-    )
-
-    if (favVacancies.length === 0) {
-      setIsEmptyArr(true)
-    } else {
-      setIsEmptyArr(false)
-    }
-  }, [favVacancies.length])
+  const favVacancies: IVacancy[] =
+    JSON.parse(localStorage.getItem('favVacancies')) || []
 
   const handleBtnClick = () => {
     navigate(PATHS.VACANCIES)
   }
 
+  const handleVacancyClick = (id: number) => {
+    localStorage.setItem('vacancyId', JSON.stringify(id))
+    navigate(`${PATHS.VACANCIES}/${id}`)
+  }
+
   return {
-    isEmptyArr,
     favVacancies,
     handleBtnClick,
+    handleVacancyClick,
   }
 }

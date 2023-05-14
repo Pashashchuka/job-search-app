@@ -73,7 +73,7 @@ const Vacancy: FC<IVacancyProps> = ({ vacancy, handleVacancyClick }) => {
       />
       <img
         className={
-          vacancy.favorite && isFillStar
+          vacancy.favorite || isFillStar
             ? styles.fillStarIcon
             : styles.hiddenStarIcon
         }
