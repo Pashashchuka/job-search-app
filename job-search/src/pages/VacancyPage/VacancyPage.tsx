@@ -19,12 +19,7 @@ const VacancyPage: FC = () => {
         ) : (
           <>
             <SecondaryVacancy
-              profession={vacancy.profession}
-              salaryFrom={vacancy.payment_from}
-              salaryTo={vacancy.payment_to}
-              location={vacancy.town.title}
-              schedule={vacancy.type_of_work.title}
-              currency={vacancy.currency}
+             vacancy={vacancy}
             />
             <div
               className={styles.block}
