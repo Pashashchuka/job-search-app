@@ -25,25 +25,17 @@ const FavoritesPage: FC = () => {
             {favVacancies.map((vacancy: IVacancy) => (
               <Vacancy key={vacancy.id} vacancy={vacancy} />
             ))}
-             <div className={styles.pagination}>
-                <button className={styles.arrowBtn}>
-                  <img
-                    className={styles.prevIcon}
-                    src={arrow}
-                    alt="arrowPrev"
-                  />
-                </button>
-                <button className={styles.pageBtn}>1</button>
-                <button className={styles.pageBtn}>2</button>
-                <button className={styles.pageBtn}>3</button>
-                <button className={styles.arrowBtn}>
-                  <img
-                    className={styles.nextIcon}
-                    src={arrow}
-                    alt="arrowNext"
-                  />
-                </button>
-              </div>
+            <div className={styles.pagination}>
+              <button className={styles.arrowBtn}>
+                <img className={styles.prevIcon} src={arrow} alt="arrowPrev" />
+              </button>
+              <button className={styles.pageBtn}>1</button>
+              <button className={styles.pageBtn}>2</button>
+              <button className={styles.pageBtn}>3</button>
+              <button className={styles.arrowBtn}>
+                <img className={styles.nextIcon} src={arrow} alt="arrowNext" />
+              </button>
+            </div>
           </div>
         ) : (
           <div className={styles.block}>
