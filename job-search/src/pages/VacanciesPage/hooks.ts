@@ -6,6 +6,7 @@ import { PATHS } from 'router/paths'
 
 export const useSearchPage = () => {
   const navigate = useNavigate()
+  const favVacancies = JSON.parse(localStorage.getItem('favVacancies')) || []
 
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [vacancies, setVacancies] = useState<IVacancy[]>([])
@@ -27,9 +28,15 @@ export const useSearchPage = () => {
     navigate(`${PATHS.VACANCIES}/${id}`)
   }
 
+  const filteredVacancies = vacancies.filter((vacancy) => {
+    return !favVacancies.some(
+      (favVacancy: IVacancy) => favVacancy.id === vacancy.id,
+    )
+  })
+
   return {
-    vacancies,
     isLoading,
+    filteredVacancies,
     handleVacancyClick,
   }
 }

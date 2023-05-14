@@ -8,6 +8,8 @@ export const useVacancy = () => {
   const handleStarClick = (vacancy: IVacancy) => {
     const favVacancies = JSON.parse(localStorage.getItem('favVacancies')) || []
 
+    vacancy.favorite = true
+
     favVacancies.push(vacancy)
     localStorage.setItem('favVacancies', JSON.stringify(favVacancies))
     setIsFillStar(true)

@@ -59,7 +59,7 @@ const Vacancy: FC<IVacancyProps> = ({ vacancy, handleVacancyClick }) => {
       </div>
       <img
         className={styles.starIcon}
-        src={isFillStar ? fillStar : star}
+        src={vacancy.favorite ? fillStar : star}
         onClick={(event) => {
           event.stopPropagation()
           handleStarClick(vacancy)

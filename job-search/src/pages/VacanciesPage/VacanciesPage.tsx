@@ -14,7 +14,7 @@ import { useSearchPage } from './hooks'
 import styles from './VacanciesPage.module.scss'
 
 const VacanciesPage: FC = () => {
-  const { vacancies, isLoading, handleVacancyClick } = useSearchPage()
+  const { filteredVacancies, isLoading, handleVacancyClick } = useSearchPage()
 
   return (
     <Layout>
@@ -74,7 +74,7 @@ const VacanciesPage: FC = () => {
           ) : (
             <>
               <div className={styles.vacancyWrapper}>
-                {vacancies.map((vacancy) => (
+                {filteredVacancies.map((vacancy) => (
                   <Vacancy
                     key={vacancy.id}
                     vacancy={vacancy}
