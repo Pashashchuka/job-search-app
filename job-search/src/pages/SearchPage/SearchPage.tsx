@@ -74,29 +74,13 @@ const SearchPage: FC = () => {
           ) : (
             <>
               <div className={styles.vacancyWrapper}>
-                {vacancies.map(
-                  ({
-                    id,
-                    profession,
-                    payment_from,
-                    payment_to,
-                    currency,
-                    town,
-                    type_of_work,
-                  }) => (
-                    <Vacancy
-                      key={id}
-                      profession={profession}
-                      salaryFrom={payment_from}
-                      salaryTo={payment_to}
-                      location={town.title}
-                      schedule={type_of_work.title}
-                      currency={currency}
-                      handleVacancyClick={handleVacancyClick}
-                      id={id}
-                    />
-                  ),
-                )}
+                {vacancies.map((vacancy) => (
+                  <Vacancy
+                    key={vacancy.id}
+                    vacancy={vacancy}
+                    handleVacancyClick={handleVacancyClick}
+                  />
+                ))}
               </div>
               <div className={styles.pagination}>
                 <button className={styles.arrowBtn}>

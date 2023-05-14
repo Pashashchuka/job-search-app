@@ -1,56 +1,52 @@
 import { FC } from 'react'
 
+import { IVacancy } from 'api'
+
 import locationIcon from 'assets/icons/location.svg'
+import fillStar from 'assets/icons/fillStar.svg'
 import star from 'assets/icons/star.svg'
+
+import { useVacancy } from './hooks'
 
 import styles from './Vacancy.module.scss'
 
 interface IVacancyProps {
-  profession?: string
-  salaryFrom?: number
-  salaryTo?: number
-  schedule?: string
-  location?: string
-  currency?: string
-  id?: number
+  vacancy: IVacancy
   handleVacancyClick?: (id: number) => void
 }
 
-const Vacancy: FC<IVacancyProps> = ({
-  profession,
-  salaryFrom,
-  salaryTo,
-  schedule,
-  location,
-  currency,
-  id,
-  handleVacancyClick,
-}) => {
+const Vacancy: FC<IVacancyProps> = ({ vacancy, handleVacancyClick }) => {
+  const { isFillStar, handleStarClick } = useVacancy()
+
   return (
-    <div className={styles.wrapper} onClick={() => handleVacancyClick(id)}>
+    <div
+      className={styles.wrapper}
+      onClick={() => handleVacancyClick(vacancy.id)}
+    >
       <div className={styles.vacancyBlock}>
-        <h2 className={styles.title}>{profession}</h2>
+        <h2 className={styles.title}>{vacancy.profession}</h2>
         <div className={styles.infoBlock}>
-          {salaryFrom === 0 && salaryTo === 0 && (
+          {vacancy.payment_from === 0 && vacancy.payment_to === 0 && (
             <h5 className={styles.salary}>з/п не указана</h5>
           )}
-          {salaryFrom === 0 && salaryTo !== 0 && (
+          {vacancy.payment_from === 0 && vacancy.payment_to !== 0 && (
             <h5 className={styles.salary}>
-              з/п до {salaryTo} {currency}
+              з/п до {vacancy.payment_to} {vacancy.currency}
             </h5>
           )}
-          {salaryFrom !== 0 && salaryTo === 0 && (
+          {vacancy.payment_from !== 0 && vacancy.payment_to === 0 && (
             <h5 className={styles.salary}>
-              з/п от {salaryFrom} {currency}
+              з/п от {vacancy.payment_from} {vacancy.currency}
             </h5>
           )}
-          {salaryFrom !== 0 && salaryTo !== 0 && (
+          {vacancy.payment_from !== 0 && vacancy.payment_to !== 0 && (
             <h5 className={styles.salary}>
-              з/п {salaryFrom} - {salaryTo} {currency}
+              з/п {vacancy.payment_from} - {vacancy.payment_to}{' '}
+              {vacancy.currency}
             </h5>
           )}
           <div className={styles.dot}></div>
-          <p className={styles.type}>{schedule}</p>
+          <p className={styles.type}>{vacancy.type_of_work.title}</p>
         </div>
         <div className={styles.locationBlock}>
           <img
@@ -58,10 +54,18 @@ const Vacancy: FC<IVacancyProps> = ({
             src={locationIcon}
             alt="location"
           />
-          <p className={styles.city}>{location}</p>
+          <p className={styles.city}>{vacancy.town.title}</p>
         </div>
       </div>
-      <img className={styles.starIcon} src={star} alt="star" />
+      <img
+        className={styles.starIcon}
+        src={isFillStar ? fillStar : star}
+        onClick={(event) => {
+          event.stopPropagation()
+          handleStarClick(vacancy)
+        }}
+        alt="star"
+      />
     </div>
   )
 }
