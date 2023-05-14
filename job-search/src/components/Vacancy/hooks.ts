@@ -2,6 +2,8 @@ import { useState } from 'react'
 
 import { IVacancy } from 'api'
 
+import { PATHS } from 'router/paths'
+
 export const useVacancy = () => {
   const [isFillStar, setIsFillStar] = useState<boolean>(false)
   const [isDefaultStar, setIsDefaultStar] = useState<boolean>(true)
@@ -20,6 +22,7 @@ export const useVacancy = () => {
 
   const handleFillStarClick = (vacancy: IVacancy) => {
     const favVacancies = JSON.parse(localStorage.getItem('favVacancies'))
+    const currentPathName = window.location.pathname
 
     vacancy.favorite = false
 
@@ -29,8 +32,11 @@ export const useVacancy = () => {
 
     localStorage.setItem('favVacancies', JSON.stringify(filteredFavVacancies))
     setIsDefaultStar(true)
-    setIsHiddenVacancy(true)
     setIsFillStar(false)
+
+    if (currentPathName === PATHS.FAVORITES) {
+      setIsHiddenVacancy(true)
+    }
   }
 
   return {
