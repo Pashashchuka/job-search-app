@@ -16,7 +16,8 @@ interface IVacancyProps {
 }
 
 const Vacancy: FC<IVacancyProps> = ({ vacancy, handleVacancyClick }) => {
-  const { isFillStar, handleStarClick } = useVacancy()
+  const { handleStarClick, handleFillStarClick, isFillStar, isDefaultStar } =
+    useVacancy()
 
   return (
     <div
@@ -59,9 +60,9 @@ const Vacancy: FC<IVacancyProps> = ({ vacancy, handleVacancyClick }) => {
       </div>
       <img
         className={
-          vacancy.favorite || isFillStar
-            ? styles.hiddenStarIcon
-            : styles.starIcon
+          !vacancy.favorite && isDefaultStar
+            ? styles.starIcon
+            : styles.hiddenStarIcon
         }
         src={star}
         onClick={(event) => {
@@ -72,13 +73,14 @@ const Vacancy: FC<IVacancyProps> = ({ vacancy, handleVacancyClick }) => {
       />
       <img
         className={
-          vacancy.favorite || isFillStar
+          vacancy.favorite && isFillStar
             ? styles.fillStarIcon
             : styles.hiddenStarIcon
         }
         src={fillStar}
         onClick={(event) => {
           event.stopPropagation()
+          handleFillStarClick(vacancy)
         }}
         alt="star"
       />

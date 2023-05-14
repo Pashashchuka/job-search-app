@@ -14,13 +14,12 @@ import { useFavoritesPage } from './hooks'
 import styles from './FavoritesPage.module.scss'
 
 const FavoritesPage: FC = () => {
-  const { handleClick } = useFavoritesPage()
-  const favVacancies = JSON.parse(localStorage.getItem('favVacancies'))
+  const { handleBtnClick, favVacancies, isEmptyArr } = useFavoritesPage()
 
   return (
     <Layout>
       <div className={styles.wrapper}>
-        {favVacancies ? (
+        {!isEmptyArr ? (
           <div className={styles.vacancyBlock}>
             {favVacancies.map((vacancy: IVacancy, index: number) => (
               <Vacancy key={index} vacancy={vacancy} />
@@ -43,7 +42,7 @@ const FavoritesPage: FC = () => {
             <h2 className={styles.title}>Упс, здесь еще ничего нет!</h2>
             <Button
               className={styles.button}
-              handleClick={handleClick}
+              handleClick={handleBtnClick}
               content="Поиск Вакансий"
             />
           </div>
