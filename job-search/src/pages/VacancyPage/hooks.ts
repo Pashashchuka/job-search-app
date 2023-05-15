@@ -14,12 +14,18 @@ export const useVacancyPage = () => {
     setIsLoading(true)
 
     const fetchVacancy = async () => {
+      const favVacancies = JSON.parse(localStorage.getItem('favVacancies'))
+
       const response = await getVacancy(vacancyId)
+
+      const isFavVacancy = favVacancies.some(
+        (vacancy: IVacancy) => vacancy.id.toString() === vacancyId,
+      )
 
       if (prevPathName === PATHS.FAVORITES) {
         response.favorite = true
-      } else {
-        response.favorite = false
+      } else if (prevPathName === PATHS.VACANCIES && isFavVacancy) {
+        response.favorite = true
       }
 
       setVacancy(response)
