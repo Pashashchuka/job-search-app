@@ -56,9 +56,7 @@ const SecondaryVacancy: FC<ISecondaryVacancyProps> = ({ vacancy }) => {
       </div>
       <img
         className={
-          !vacancy.favorite && isDefaultStar
-            ? styles.starIcon
-            : styles.hiddenStarIcon
+          !vacancy.favorite && isDefaultStar ? styles.starIcon : styles.hidden
         }
         src={star}
         onClick={(event) => {
@@ -69,9 +67,7 @@ const SecondaryVacancy: FC<ISecondaryVacancyProps> = ({ vacancy }) => {
       />
       <img
         className={
-          vacancy.favorite && isFillStar
-            ? styles.fillStarIcon
-            : styles.hiddenStarIcon
+          vacancy.favorite || isFillStar ? styles.fillStarIcon : styles.hidden
         }
         src={fillStar}
         onClick={(event) => {

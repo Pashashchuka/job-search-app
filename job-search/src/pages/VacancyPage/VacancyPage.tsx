@@ -18,9 +18,7 @@ const VacancyPage: FC = () => {
           <Loader />
         ) : (
           <>
-            <SecondaryVacancy
-             vacancy={vacancy}
-            />
+            <SecondaryVacancy vacancy={vacancy} />
             <div
               className={styles.block}
               dangerouslySetInnerHTML={{ __html: vacancy.vacancyRichText }}

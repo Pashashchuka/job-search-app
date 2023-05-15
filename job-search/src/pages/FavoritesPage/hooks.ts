@@ -16,6 +16,11 @@ export const useFavoritesPage = () => {
 
   const handleVacancyClick = (id: number) => {
     localStorage.setItem('vacancyId', JSON.stringify(id))
+    localStorage.setItem(
+      'prevPathName',
+      JSON.stringify(window.location.pathname),
+    )
+
     navigate(`${PATHS.VACANCIES}/${id}`)
   }
 
