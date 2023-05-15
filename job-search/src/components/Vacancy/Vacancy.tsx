@@ -65,7 +65,7 @@ const Vacancy: FC<IVacancyProps> = ({ vacancy, handleVacancyClick }) => {
       </div>
       <img
         className={
-          !vacancy.favorite && isDefaultStar ? styles.starIcon : styles.hidden
+          !vacancy.favorite || isDefaultStar ? styles.starIcon : styles.hidden
         }
         src={star}
         onClick={(event) => {

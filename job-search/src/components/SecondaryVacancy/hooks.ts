@@ -4,7 +4,7 @@ import { IVacancy } from 'api'
 
 export const useSecondaryVacancy = () => {
   const [isFillStar, setIsFillStar] = useState<boolean>(false)
-  const [isDefaultStar, setIsDefaultStar] = useState<boolean>(true)
+  const [isDefaultStar, setIsDefaultStar] = useState<boolean>(false)
 
   const handleStarClick = (vacancy: IVacancy) => {
     const favVacancies = JSON.parse(localStorage.getItem('favVacancies')) || []

@@ -6,7 +6,7 @@ import { PATHS } from 'router/paths'
 
 export const useVacancy = () => {
   const [isFillStar, setIsFillStar] = useState<boolean>(false)
-  const [isDefaultStar, setIsDefaultStar] = useState<boolean>(true)
+  const [isDefaultStar, setIsDefaultStar] = useState<boolean>(false)
   const [isHiddenVacancy, setIsHiddenVacancy] = useState<boolean>(false)
 
   const handleStarClick = (vacancy: IVacancy) => {
