@@ -19,11 +19,18 @@ const VacanciesPage: FC = () => {
     paginatedVacancies,
     searchParams,
     currentPage,
+    salaryFrom,
     isLoading,
+    salaryTo,
     pages,
+    handleClickArrowDownBtn,
+    handleClickArrowUpBtn,
     onChangeSearchParams,
+    onChangeSalaryValue,
     handleVacancyClick,
     setCurrentPage,
+    setSalaryFrom,
+    setSalaryTo,
   } = useSearchPage()
 
   return (
@@ -47,17 +54,53 @@ const VacanciesPage: FC = () => {
           <div className={styles.salaryBlock}>
             <h4 className={styles.subtitle}>Оклад</h4>
             <div className={styles.salaryWrapper}>
-              <input className={styles.salary} type="text" placeholder="От" />
+              <input
+                className={styles.salary}
+                onChange={(event) => onChangeSalaryValue(event, setSalaryFrom)}
+                value={salaryFrom}
+                type="number"
+                placeholder="От"
+              />
               <div className={styles.arrowBlock}>
-                <img className={styles.arrowUp} src={arrow} alt="arrowUp" />
-                <img className={styles.arrowDown} src={arrow} alt="arrowDown" />
+                <img
+                  className={styles.arrowUp}
+                  onClick={() =>
+                    handleClickArrowUpBtn(salaryFrom, setSalaryFrom)
+                  }
+                  src={arrow}
+                  alt="arrowUp"
+                />
+                <img
+                  className={styles.arrowDown}
+                  onClick={() =>
+                    handleClickArrowDownBtn(salaryFrom, setSalaryFrom)
+                  }
+                  src={arrow}
+                  alt="arrowDown"
+                />
               </div>
             </div>
             <div className={styles.salaryWrapper}>
-              <input className={styles.salary} type="text" placeholder="До" />
+              <input
+                className={styles.salary}
+                onChange={(event) => onChangeSalaryValue(event, setSalaryTo)}
+                value={salaryTo}
+                type="number"
+                placeholder="До"
+              />
               <div className={styles.arrowBlock}>
-                <img className={styles.arrowUp} src={arrow} alt="arrowUp" />
-                <img className={styles.arrowDown} src={arrow} alt="arrowDown" />
+                <img
+                  className={styles.arrowUp}
+                  onClick={() => handleClickArrowUpBtn(salaryTo, setSalaryTo)}
+                  src={arrow}
+                  alt="arrowUp"
+                />
+                <img
+                  className={styles.arrowDown}
+                  onClick={() => handleClickArrowDownBtn(salaryTo, setSalaryTo)}
+                  src={arrow}
+                  alt="arrowDown"
+                />
               </div>
             </div>
           </div>

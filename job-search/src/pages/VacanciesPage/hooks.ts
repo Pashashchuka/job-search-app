@@ -1,13 +1,16 @@
-import { SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { getAllVacancies, IVacancy } from 'api'
+
 import { PATHS } from 'router/paths'
 
 export const useSearchPage = () => {
   const navigate = useNavigate()
   const favVacancies = JSON.parse(localStorage.getItem('favVacancies')) || []
 
+  const [salaryFrom, setSalaryFrom] = useState<string>('')
+  const [salaryTo, setSalaryTo] = useState<string>('')
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [vacancies, setVacancies] = useState<IVacancy[]>([])
   const [searchParams, setSearchParams] = useState<string>('')
@@ -61,14 +64,48 @@ export const useSearchPage = () => {
 
   const pages = Math.ceil(searchVacancies.length / 4)
 
+  const handleClickArrowUpBtn = (
+    salary: string,
+    setSalary: Dispatch<SetStateAction<string>>,
+  ) => {
+    const newSalary = parseFloat(salary) + 1
+    setSalary(newSalary.toString())
+  }
+
+  const handleClickArrowDownBtn = (
+    salary: string,
+    setSalary: Dispatch<SetStateAction<string>>,
+  ) => {
+    if (salary === '0') {
+      setSalary('0')
+    } else {
+      const newSalary = parseFloat(salary) - 1
+      setSalary(newSalary.toString())
+    }
+  }
+
+  const onChangeSalaryValue = (
+    event,
+    setSalary: Dispatch<SetStateAction<string>>,
+  ) => {
+    setSalary(event.target.value)
+  }
+
   return {
     pages,
+    salaryTo,
     isLoading,
+    salaryFrom,
     currentPage,
     searchParams,
     paginatedVacancies,
+    setSalaryTo,
+    setSalaryFrom,
     setCurrentPage,
     handleVacancyClick,
+    onChangeSalaryValue,
     onChangeSearchParams,
+    handleClickArrowUpBtn,
+    handleClickArrowDownBtn,
   }
 }
