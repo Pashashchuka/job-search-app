@@ -1,8 +1,7 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { IVacancy } from 'api'
-
-import { useState } from 'react'
 
 import { PATHS } from 'router/paths'
 
@@ -11,10 +10,6 @@ export const useFavoritesPage = () => {
 
   const favVacancies: IVacancy[] =
     JSON.parse(localStorage.getItem('favVacancies')) || []
-
-  const handleBtnClick = () => {
-    navigate(PATHS.VACANCIES)
-  }
 
   const handleVacancyClick = (id: number) => {
     localStorage.setItem('vacancyId', JSON.stringify(id))
@@ -43,7 +38,6 @@ export const useFavoritesPage = () => {
     currentPage,
     favVacancies,
     paginatedVacancies,
-    handleBtnClick,
     setCurrentPage,
     handleVacancyClick,
   }

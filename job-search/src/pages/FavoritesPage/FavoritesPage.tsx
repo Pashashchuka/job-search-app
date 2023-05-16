@@ -2,12 +2,10 @@ import { FC } from 'react'
 
 import { IVacancy } from 'api'
 
-import person from 'assets/icons/person.svg'
-
+import EmptyFavorites from 'components/EmptyFavorites'
 import Pagintaion from 'components/Pagintaion'
 import Vacancy from 'components/Vacancy'
 import Layout from 'components/Layout'
-import Button from 'components/Button'
 
 import { useFavoritesPage } from './hooks'
 
@@ -20,7 +18,6 @@ const FavoritesPage: FC = () => {
     currentPage,
     pages,
     handleVacancyClick,
-    handleBtnClick,
     setCurrentPage,
   } = useFavoritesPage()
 
@@ -43,15 +40,7 @@ const FavoritesPage: FC = () => {
             />
           </div>
         ) : (
-          <div className={styles.block}>
-            <img className={styles.person} src={person} alt="person" />
-            <h2 className={styles.title}>Упс, здесь еще ничего нет!</h2>
-            <Button
-              className={styles.button}
-              handleClick={handleBtnClick}
-              content="Поиск Вакансий"
-            />
-          </div>
+          <EmptyFavorites />
         )}
       </div>
     </Layout>

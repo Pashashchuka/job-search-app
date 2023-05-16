@@ -8,6 +8,7 @@ export const useVacancy = () => {
   const [isFillStar, setIsFillStar] = useState<boolean>(false)
   const [isDefaultStar, setIsDefaultStar] = useState<boolean>(false)
   const [isHiddenVacancy, setIsHiddenVacancy] = useState<boolean>(false)
+  const [isLastVacancy, setIsLastVacancy] = useState<boolean>(false)
 
   const handleStarClick = (vacancy: IVacancy) => {
     const favVacancies = JSON.parse(localStorage.getItem('favVacancies')) || []
@@ -36,11 +37,16 @@ export const useVacancy = () => {
 
     if (currentPathName === PATHS.FAVORITES) {
       setIsHiddenVacancy(true)
+
+      if (favVacancies.length === 1) {
+        setIsLastVacancy(true)
+      }
     }
   }
 
   return {
     isFillStar,
+    isLastVacancy,
     isDefaultStar,
     isHiddenVacancy,
     handleStarClick,
