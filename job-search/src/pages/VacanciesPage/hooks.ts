@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { SetStateAction, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { getAllVacancies, IVacancy } from 'api'
@@ -10,6 +10,8 @@ export const useSearchPage = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [vacancies, setVacancies] = useState<IVacancy[]>([])
+  const [searchParams, setSearchParams] = useState<string>('')
+  const [currentPage, setCurrentPage] = useState<number>(1)
 
   useEffect(() => {
     setIsLoading(true)
@@ -39,24 +41,34 @@ export const useSearchPage = () => {
     )
   })
 
-  const [currentPage, setCurrentPage] = useState<number>(1)
+  const searchVacancies = filteredVacancies.filter((vacancy) =>
+    vacancy.profession.toLowerCase().includes(searchParams.toLowerCase()),
+  )
+
+  const onChangeSearchParams = (event: {
+    target: { value: SetStateAction<string> }
+  }) => {
+    setSearchParams(event.target.value)
+  }
 
   const indexOfLastVacancy = currentPage * 4
   const indexOfFirstVacancy = indexOfLastVacancy - 4
 
-  const paginatedVacancies = filteredVacancies.slice(
+  const paginatedVacancies = searchVacancies.slice(
     indexOfFirstVacancy,
     indexOfLastVacancy,
   )
 
-  const pages = Math.ceil(filteredVacancies.length / 4)
+  const pages = Math.ceil(searchVacancies.length / 4)
 
   return {
     pages,
     isLoading,
     currentPage,
+    searchParams,
     paginatedVacancies,
     setCurrentPage,
     handleVacancyClick,
+    onChangeSearchParams,
   }
 }
