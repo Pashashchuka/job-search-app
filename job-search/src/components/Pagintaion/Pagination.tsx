@@ -17,19 +17,23 @@ const Pagination: FC<IPaginationProps> = ({
 }) => {
   const pageNumbers = [...Array(pages + 1).keys()].slice(1)
 
-  const nextPage = () => {
+  const handleClickPrevPage = () => {
+    if (currentPage !== 1) setCurrentPage(currentPage - 1)
+  }
+
+  const handleClickNextPage = () => {
     if (currentPage !== pages) setCurrentPage(currentPage + 1)
   }
 
-  const prevPage = () => {
-    if (currentPage !== 1) setCurrentPage(currentPage - 1)
+  const handleClickPageBtn = (page: number) => {
+    setCurrentPage(page)
   }
 
   return (
     <div className={styles.pagination}>
       <button
         className={styles.arrowBtn}
-        onClick={prevPage}
+        onClick={handleClickPrevPage}
         disabled={currentPage === 1}
       >
         <img className={styles.prevIcon} src={arrow} alt="arrowPrev" />
@@ -40,11 +44,12 @@ const Pagination: FC<IPaginationProps> = ({
           className={
             page !== currentPage ? styles.pageBtn : styles.pageBtnActive
           }
+          onClick={() => handleClickPageBtn(page)}
         >
           {page}
         </button>
       ))}
-      <button className={styles.arrowBtn} onClick={nextPage}>
+      <button className={styles.arrowBtn} onClick={handleClickNextPage}>
         <img className={styles.nextIcon} src={arrow} alt="arrowNext" />
       </button>
     </div>
