@@ -85,7 +85,7 @@ export const useSearchPage = () => {
   }
 
   const onChangeSalaryValue = (
-    event,
+    event: { target: { value: SetStateAction<string> } },
     setSalary: Dispatch<SetStateAction<string>>,
   ) => {
     setSalary(event.target.value)
