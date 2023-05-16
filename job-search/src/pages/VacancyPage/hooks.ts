@@ -14,7 +14,7 @@ export const useVacancyPage = () => {
     setIsLoading(true)
 
     const fetchVacancy = async () => {
-      const favVacancies = JSON.parse(localStorage.getItem('favVacancies'))
+      const favVacancies = JSON.parse(localStorage.getItem('favVacancies')) || []
 
       const response = await getVacancy(vacancyId)
 
