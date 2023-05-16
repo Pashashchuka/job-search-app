@@ -15,7 +15,14 @@ import { useSearchPage } from './hooks'
 import styles from './VacanciesPage.module.scss'
 
 const VacanciesPage: FC = () => {
-  const { filteredVacancies, isLoading, handleVacancyClick } = useSearchPage()
+  const {
+    paginatedVacancies,
+    currentPage,
+    isLoading,
+    pages,
+    handleVacancyClick,
+    setCurrentPage,
+  } = useSearchPage()
 
   return (
     <Layout>
@@ -75,7 +82,7 @@ const VacanciesPage: FC = () => {
           ) : (
             <>
               <div className={styles.vacancyWrapper}>
-                {filteredVacancies.map((vacancy) => (
+                {paginatedVacancies.map((vacancy) => (
                   <Vacancy
                     key={vacancy.id}
                     vacancy={vacancy}
@@ -83,7 +90,11 @@ const VacanciesPage: FC = () => {
                   />
                 ))}
               </div>
-              <Pagintaion vacancies={filteredVacancies} />
+              <Pagintaion
+                pages={pages}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
             </>
           )}
         </div>

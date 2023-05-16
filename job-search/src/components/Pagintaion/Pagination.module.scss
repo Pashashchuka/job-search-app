@@ -6,7 +6,8 @@
 }
 
 .arrowBtn,
-.pageBtn {
+.pageBtn,
+.pageBtnActive {
   height: 32px;
   width: 32px;
 }
@@ -47,6 +48,14 @@
     border: none;
     color: var(--white-color);
   }
+}
+
+.pageBtnActive {
+  background-color: var(--light-blue-color);
+  border: none;
+  color: var(--white-color);
+  cursor: pointer;
+  font: var(--font-text-2);
 }
 
 .nextIcon {

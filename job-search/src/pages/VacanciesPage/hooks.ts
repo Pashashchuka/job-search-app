@@ -39,9 +39,24 @@ export const useSearchPage = () => {
     )
   })
 
+  const [currentPage, setCurrentPage] = useState<number>(1)
+
+  const indexOfLastVacancy = currentPage * 4
+  const indexOfFirstVacancy = indexOfLastVacancy - 4
+
+  const paginatedVacancies = filteredVacancies.slice(
+    indexOfFirstVacancy,
+    indexOfLastVacancy,
+  )
+
+  const pages = Math.ceil(filteredVacancies.length / 4)
+
   return {
+    pages,
     isLoading,
-    filteredVacancies,
+    currentPage,
+    paginatedVacancies,
+    setCurrentPage,
     handleVacancyClick,
   }
 }

@@ -29,7 +29,6 @@ const FavoritesPage: FC = () => {
                 handleVacancyClick={handleVacancyClick}
               />
             ))}
-            <Pagintaion vacancies={favVacancies} />
           </div>
         ) : (
           <div className={styles.block}>
