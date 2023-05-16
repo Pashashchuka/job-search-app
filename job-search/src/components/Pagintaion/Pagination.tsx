@@ -30,7 +30,7 @@ const Pagination: FC<IPaginationProps> = ({
   }
 
   return (
-    <div className={styles.pagination}>
+    <div className={styles.pagination} id="pagination">
       <button
         className={styles.arrowBtn}
         onClick={handleClickPrevPage}

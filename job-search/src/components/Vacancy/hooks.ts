@@ -39,7 +39,10 @@ export const useVacancy = () => {
       setIsHiddenVacancy(true)
 
       if (favVacancies.length === 1) {
+        const pagination = document.getElementById('pagination')
+        
         setIsLastVacancy(true)
+        pagination.style.display = 'none'
       }
     }
   }
