@@ -14,21 +14,33 @@ import { useFavoritesPage } from './hooks'
 import styles from './FavoritesPage.module.scss'
 
 const FavoritesPage: FC = () => {
-  const { handleBtnClick, handleVacancyClick, favVacancies } =
-    useFavoritesPage()
+  const {
+    paginatedVacancies,
+    favVacancies,
+    currentPage,
+    pages,
+    handleVacancyClick,
+    handleBtnClick,
+    setCurrentPage,
+  } = useFavoritesPage()
 
   return (
     <Layout>
       <div className={styles.wrapper}>
         {favVacancies.length && favVacancies ? (
           <div className={styles.vacancyBlock}>
-            {favVacancies.map((vacancy: IVacancy, index: number) => (
+            {paginatedVacancies.map((vacancy: IVacancy, index: number) => (
               <Vacancy
                 key={index}
                 vacancy={vacancy}
                 handleVacancyClick={handleVacancyClick}
               />
             ))}
+            <Pagintaion
+              pages={pages}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
           </div>
         ) : (
           <div className={styles.block}>
