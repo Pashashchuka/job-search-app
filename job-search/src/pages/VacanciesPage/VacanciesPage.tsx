@@ -4,6 +4,7 @@ import search from 'assets/icons/search.svg'
 import close from 'assets/icons/close.svg'
 import arrow from 'assets/icons/down.svg'
 
+import Pagintaion from 'components/Pagintaion'
 import Vacancy from 'components/Vacancy'
 import Button from 'components/Button'
 import Layout from 'components/Layout'
@@ -82,25 +83,7 @@ const VacanciesPage: FC = () => {
                   />
                 ))}
               </div>
-              <div className={styles.pagination}>
-                <button className={styles.arrowBtn}>
-                  <img
-                    className={styles.prevIcon}
-                    src={arrow}
-                    alt="arrowPrev"
-                  />
-                </button>
-                <button className={styles.pageBtn}>1</button>
-                <button className={styles.pageBtn}>2</button>
-                <button className={styles.pageBtn}>3</button>
-                <button className={styles.arrowBtn}>
-                  <img
-                    className={styles.nextIcon}
-                    src={arrow}
-                    alt="arrowNext"
-                  />
-                </button>
-              </div>
+              <Pagintaion vacancies={filteredVacancies} />
             </>
           )}
         </div>
