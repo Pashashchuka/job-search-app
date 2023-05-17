@@ -1,10 +1,7 @@
 import { FC } from 'react'
 
 import search from 'assets/icons/search.svg'
-import close from 'assets/icons/close.svg'
-import arrow from 'assets/icons/down.svg'
 
-import InputSelect from 'components/InputSelect'
 import Pagintaion from 'components/Pagintaion'
 import Vacancy from 'components/Vacancy'
 import Button from 'components/Button'
@@ -14,6 +11,7 @@ import Loader from 'components/Loader'
 import { useSearchPage } from './hooks'
 
 import styles from './VacanciesPage.module.scss'
+import VacanciesForm from './VacanciesForm'
 
 const VacanciesPage: FC = () => {
   const {
@@ -37,73 +35,15 @@ const VacanciesPage: FC = () => {
   return (
     <Layout>
       <div className={styles.wrapper}>
-        <div className={styles.filterBlock}>
-          <div className={styles.titleBlock}>
-            <h3 className={styles.title}>Фильтры</h3>
-            <button className={styles.resetBtn}>
-              <p className={styles.resetText}>Сбросить все</p>
-              <img className={styles.closeImg} src={close} alt="close" />
-            </button>
-          </div>
-          <div className={styles.industryBlock}>
-            <h4 className={styles.subtitle}>Отрасль</h4>
-            <InputSelect />
-          </div>
-          <div className={styles.salaryBlock}>
-            <h4 className={styles.subtitle}>Оклад</h4>
-            <div className={styles.salaryWrapper}>
-              <input
-                className={styles.salary}
-                onChange={(event) => onChangeSalaryValue(event, setSalaryFrom)}
-                value={salaryFrom}
-                type="number"
-                placeholder="От"
-              />
-              <div className={styles.arrowBlock}>
-                <img
-                  className={styles.arrowUp}
-                  onClick={() =>
-                    handleClickArrowUpBtn(salaryFrom, setSalaryFrom)
-                  }
-                  src={arrow}
-                  alt="arrowUp"
-                />
-                <img
-                  className={styles.arrowDown}
-                  onClick={() =>
-                    handleClickArrowDownBtn(salaryFrom, setSalaryFrom)
-                  }
-                  src={arrow}
-                  alt="arrowDown"
-                />
-              </div>
-            </div>
-            <div className={styles.salaryWrapper}>
-              <input
-                className={styles.salary}
-                onChange={(event) => onChangeSalaryValue(event, setSalaryTo)}
-                value={salaryTo}
-                type="number"
-                placeholder="До"
-              />
-              <div className={styles.arrowBlock}>
-                <img
-                  className={styles.arrowUp}
-                  onClick={() => handleClickArrowUpBtn(salaryTo, setSalaryTo)}
-                  src={arrow}
-                  alt="arrowUp"
-                />
-                <img
-                  className={styles.arrowDown}
-                  onClick={() => handleClickArrowDownBtn(salaryTo, setSalaryTo)}
-                  src={arrow}
-                  alt="arrowDown"
-                />
-              </div>
-            </div>
-          </div>
-          <Button className={styles.filterButton} content="Применить" />
-        </div>
+        <VacanciesForm
+          salaryFrom={salaryFrom}
+          salaryTo={salaryTo}
+          handleClickArrowDownBtn={handleClickArrowDownBtn}
+          handleClickArrowUpBtn={handleClickArrowUpBtn}
+          onChangeSalaryValue={onChangeSalaryValue}
+          setSalaryFrom={setSalaryFrom}
+          setSalaryTo={setSalaryTo}
+        />
         <div className={styles.searchBlock}>
           <div className={styles.searchWrapper}>
             <div className={styles.inputBlock}>
