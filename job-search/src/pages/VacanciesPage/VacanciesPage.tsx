@@ -4,6 +4,7 @@ import search from 'assets/icons/search.svg'
 import close from 'assets/icons/close.svg'
 import arrow from 'assets/icons/down.svg'
 
+import InputSelect from 'components/InputSelect'
 import Pagintaion from 'components/Pagintaion'
 import Vacancy from 'components/Vacancy'
 import Button from 'components/Button'
@@ -39,17 +40,14 @@ const VacanciesPage: FC = () => {
         <div className={styles.filterBlock}>
           <div className={styles.titleBlock}>
             <h3 className={styles.title}>Фильтры</h3>
-            <div className={styles.resetBlock}>
+            <button className={styles.resetBtn}>
               <p className={styles.resetText}>Сбросить все</p>
               <img className={styles.closeImg} src={close} alt="close" />
-            </div>
+            </button>
           </div>
           <div className={styles.industryBlock}>
             <h4 className={styles.subtitle}>Отрасль</h4>
-            <button className={styles.industryBtn}>
-              Выберете отрасль
-              <img className={styles.arrow} src={arrow} alt="arrowDown" />
-            </button>
+            <InputSelect />
           </div>
           <div className={styles.salaryBlock}>
             <h4 className={styles.subtitle}>Оклад</h4>

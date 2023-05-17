@@ -31,8 +31,10 @@
   font: var(--font-h2);
 }
 
-.resetBlock {
+.resetBtn {
   align-items: center;
+  background: none;
+  border: none;
   cursor: pointer;
   display: flex;
   flex-direction: row;
@@ -60,32 +62,6 @@
 .subtitle {
   color: var(--black-color);
   font: var(--font-h3);
-}
-
-.industryBtn {
-  align-items: center;
-  background: none;
-  border: 1px solid var(--grey-color-300);
-  border-radius: 8px;
-  cursor: pointer;
-  color: var(--grey-color-500);
-  display: flex;
-  flex-direction: row;
-  font: var(--font-text-3);
-  justify-content: space-between;
-  height: 42px;
-  padding: 0 12px;
-  width: 275px;
-}
-
-.arrow {
-  height: 6px;
-  transition: all 0.3s ease-in-out;
-  width: 14px;
-
-  &.active {
-    transform: rotate(180deg);
-  }
 }
 
 .salaryBlock {
