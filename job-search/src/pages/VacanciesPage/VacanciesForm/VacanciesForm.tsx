@@ -1,8 +1,6 @@
 import { Dispatch, FC, SetStateAction } from 'react'
-import { Controller } from 'react-hook-form'
 
 import close from 'assets/icons/close.svg'
-import arrow from 'assets/icons/down.svg'
 
 import InputSelect from 'components/InputSelect'
 import Button from 'components/Button'
@@ -10,6 +8,7 @@ import Button from 'components/Button'
 import { useVacanciesForm } from './hooks'
 
 import styles from './VacanciesForm.module.scss'
+import Input from 'components/Input'
 
 interface IVacanciesFormProps {
   handleClickArrowDownBtn: (
@@ -44,65 +43,21 @@ const VacanciesForm: FC<IVacanciesFormProps> = ({
       <div className={styles.salaryBlock}>
         <h4 className={styles.subtitle}>Оклад</h4>
         <div className={styles.salaryWrapper}>
-          <Controller
+          <Input
             name="payment_from"
             control={control}
-            render={({ field: { onChange, value } }) => (
-              <>
-                <input
-                  className={styles.salary}
-                  onChange={onChange}
-                  value={value}
-                  type="number"
-                  placeholder="От"
-                />
-                <div className={styles.arrowBlock}>
-                  <img
-                    className={styles.arrowUp}
-                    onClick={() => handleClickArrowUpBtn(value, onChange)}
-                    src={arrow}
-                    alt="arrowUp"
-                  />
-                  <img
-                    className={styles.arrowDown}
-                    onClick={() => handleClickArrowDownBtn(value, onChange)}
-                    src={arrow}
-                    alt="arrowDown"
-                  />
-                </div>
-              </>
-            )}
+            handleArrowUpClick={handleClickArrowUpBtn}
+            handleArrowDownClick={handleClickArrowDownBtn}
+            placeholder="От"
           />
         </div>
         <div className={styles.salaryWrapper}>
-          <Controller
+          <Input
             name="payment_to"
             control={control}
-            render={({ field: { onChange, value } }) => (
-              <>
-                <input
-                  className={styles.salary}
-                  onChange={onChange}
-                  value={value}
-                  type="number"
-                  placeholder="До"
-                />
-                <div className={styles.arrowBlock}>
-                  <img
-                    className={styles.arrowUp}
-                    onClick={() => handleClickArrowUpBtn(value, onChange)}
-                    src={arrow}
-                    alt="arrowUp"
-                  />
-                  <img
-                    className={styles.arrowDown}
-                    onClick={() => handleClickArrowDownBtn(value, onChange)}
-                    src={arrow}
-                    alt="arrowDown"
-                  />
-                </div>
-              </>
-            )}
+            handleArrowUpClick={handleClickArrowUpBtn}
+            handleArrowDownClick={handleClickArrowDownBtn}
+            placeholder="До"
           />
         </div>
       </div>
