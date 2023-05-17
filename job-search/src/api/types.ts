@@ -20,3 +20,5 @@ export type TGetAccessToken = () => Promise<string>
 export type TGetAllVacancies = () => Promise<IVacancy[]>
 
 export type TGetVacancy = (id: string) => Promise<IVacancy>
+
+export type TGetCatalogues = () => Promise<string[]>

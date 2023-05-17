@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react'
 
-import { getAccessToken } from 'api'
+import { getAccessToken, getCatalogues } from 'api'
 
 import Router from 'router'
 

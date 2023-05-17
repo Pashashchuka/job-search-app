@@ -1,9 +1,15 @@
 import axios from 'axios'
 
-import { TGetAccessToken, TGetAllVacancies, TGetVacancy } from './types'
+import {
+  TGetAccessToken,
+  TGetAllVacancies,
+  TGetCatalogues,
+  TGetVacancy,
+} from './types'
 
 const BASE_URL = 'https://startup-summer-2023-proxy.onrender.com/2.0'
 const AUTHORIZATION_URL = `${BASE_URL}/oauth2/password`
+const CATALOGUES_URL = `${BASE_URL}/catalogues/`
 const VACANCIES_URL = `${BASE_URL}/vacancies/`
 
 const secretKey = process.env.REACT_APP_X_SECRET_KEY
@@ -53,6 +59,21 @@ export const getVacancy: TGetVacancy = async (id: string) => {
       },
     })
     return data
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+export const getCatalogues: TGetCatalogues = async () => {
+  try {
+    const { data } = await axios.get(`${CATALOGUES_URL}`, {
+      headers: {
+        'x-secret-key': secretKey,
+        'X-Api-App-Id': clientSecret,
+      },
+    })
+    const catalogues = data.map(({ title }: { title: string }) => title)
+    return catalogues
   } catch (error) {
     throw new Error(error)
   }
