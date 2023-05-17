@@ -5,12 +5,13 @@ import { getAllVacancies, IVacancy } from 'api'
 
 import { PATHS } from 'router/paths'
 
-export const useSearchPage = () => {
+export const useVacanciesPage = () => {
   const navigate = useNavigate()
+
   const favVacancies = JSON.parse(localStorage.getItem('favVacancies')) || []
 
-  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [vacancies, setVacancies] = useState<IVacancy[]>([])
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [searchParams, setSearchParams] = useState<string>('')
   const [currentPage, setCurrentPage] = useState<number>(1)
 
@@ -36,13 +37,13 @@ export const useSearchPage = () => {
     navigate(`${PATHS.VACANCIES}/${id}`)
   }
 
-  const filteredVacancies = vacancies.filter((vacancy) => {
+  const vacanciesWithoutFavVacancies = vacancies.filter((vacancy) => {
     return !favVacancies.some(
       (favVacancy: IVacancy) => favVacancy.id === vacancy.id,
     )
   })
 
-  const searchVacancies = filteredVacancies.filter((vacancy) =>
+  const searchVacancies = vacanciesWithoutFavVacancies.filter((vacancy) =>
     vacancy.profession.toLowerCase().includes(searchParams.toLowerCase()),
   )
 

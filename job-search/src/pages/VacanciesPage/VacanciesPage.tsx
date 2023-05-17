@@ -8,7 +8,7 @@ import Button from 'components/Button'
 import Layout from 'components/Layout'
 import Loader from 'components/Loader'
 
-import { useSearchPage } from './hooks'
+import { useVacanciesPage } from './hooks'
 
 import styles from './VacanciesPage.module.scss'
 import VacanciesForm from './VacanciesForm'
@@ -25,7 +25,7 @@ const VacanciesPage: FC = () => {
     onChangeSearchParams,
     handleVacancyClick,
     setCurrentPage,
-  } = useSearchPage()
+  } = useVacanciesPage()
 
   return (
     <Layout>
