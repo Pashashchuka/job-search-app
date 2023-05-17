@@ -25,13 +25,14 @@ const VacanciesForm: FC<IVacanciesFormProps> = ({
   handleClickArrowDownBtn,
   handleClickArrowUpBtn,
 }) => {
-  const { control, onSubmit, handleSubmit } = useVacanciesForm()
+  const { control, onSubmit, handleSubmit, handleClickResetBtn } =
+    useVacanciesForm()
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.filterBlock}>
       <div className={styles.titleBlock}>
         <h3 className={styles.title}>Фильтры</h3>
-        <button className={styles.resetBtn}>
+        <button className={styles.resetBtn} onClick={handleClickResetBtn}>
           <p className={styles.resetText}>Сбросить все</p>
           <img className={styles.closeImg} src={close} alt="close" />
         </button>

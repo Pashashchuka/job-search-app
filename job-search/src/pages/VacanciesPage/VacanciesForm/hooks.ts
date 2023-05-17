@@ -7,7 +7,7 @@ export interface FormValues {
 }
 
 export const useVacanciesForm = () => {
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, reset } = useForm({
     defaultValues: {
       catalogues: '',
       payment_from: '',
@@ -15,13 +15,24 @@ export const useVacanciesForm = () => {
     },
   })
 
+  const resetValues = {
+    catalogues: '',
+    payment_from: '',
+    payment_to: '',
+  }
+
   const onSubmit = (data: FormValues) => {
     console.log(data)
   }
 
+  const handleClickResetBtn = () => {
+    reset(resetValues)
+  }
+
   return {
     control,
-    onSubmit,
+    handleClickResetBtn,
     handleSubmit,
+    onSubmit,
   }
 }
