@@ -2,9 +2,13 @@ import { FC } from 'react'
 import { Select } from '@mantine/core'
 import { IconChevronDown } from '@tabler/icons-react'
 
+import { useInputSelect } from './hooks'
+
 import styles from './InputSelect.module.scss'
 
 const InputSelect: FC = () => {
+  const { catalogues } = useInputSelect()
+
   return (
     <Select
       placeholder="Выберете отрасль"
@@ -13,7 +17,7 @@ const InputSelect: FC = () => {
       radius="md"
       size="md"
       className={styles.select}
-      data={[]}
+      data={catalogues}
     />
   )
 }
