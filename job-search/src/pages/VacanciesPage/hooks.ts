@@ -9,8 +9,6 @@ export const useSearchPage = () => {
   const navigate = useNavigate()
   const favVacancies = JSON.parse(localStorage.getItem('favVacancies')) || []
 
-  const [salaryFrom, setSalaryFrom] = useState<string>('')
-  const [salaryTo, setSalaryTo] = useState<string>('')
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [vacancies, setVacancies] = useState<IVacancy[]>([])
   const [searchParams, setSearchParams] = useState<string>('')
@@ -84,26 +82,14 @@ export const useSearchPage = () => {
     }
   }
 
-  const onChangeSalaryValue = (
-    event: { target: { value: SetStateAction<string> } },
-    setSalary: Dispatch<SetStateAction<string>>,
-  ) => {
-    setSalary(event.target.value)
-  }
-
   return {
     pages,
-    salaryTo,
     isLoading,
-    salaryFrom,
     currentPage,
     searchParams,
     paginatedVacancies,
-    setSalaryTo,
-    setSalaryFrom,
     setCurrentPage,
     handleVacancyClick,
-    onChangeSalaryValue,
     onChangeSearchParams,
     handleClickArrowUpBtn,
     handleClickArrowDownBtn,

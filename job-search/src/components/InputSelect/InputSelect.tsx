@@ -1,23 +1,38 @@
 import { FC } from 'react'
-import { Select } from '@mantine/core'
+import { Control, Controller } from 'react-hook-form'
 import { IconChevronDown } from '@tabler/icons-react'
+import { Select } from '@mantine/core'
+
+import { FormValues } from 'pages/VacanciesPage/VacanciesForm'
 
 import { useInputSelect } from './hooks'
 
 import styles from './InputSelect.module.scss'
 
-const InputSelect: FC = () => {
+interface IInputSelectProps {
+  control: Control<FormValues>
+}
+
+const InputSelect: FC<IInputSelectProps> = ({ control }) => {
   const { catalogues } = useInputSelect()
 
   return (
-    <Select
-      placeholder="Выберете отрасль"
-      rightSection={<IconChevronDown className={styles.arrow} />}
-      rightSectionWidth={30}
-      radius="md"
-      size="md"
-      className={styles.select}
-      data={catalogues}
+    <Controller
+      name="catalogues"
+      control={control}
+      render={({ field: { onChange, value } }) => (
+        <Select
+          placeholder="Выберете отрасль"
+          rightSection={<IconChevronDown className={styles.arrow} />}
+          rightSectionWidth={30}
+          onChange={onChange}
+          value={value ?? ''}
+          radius="md"
+          size="md"
+          className={styles.select}
+          data={catalogues}
+        />
+      )}
     />
   )
 }

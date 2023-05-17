@@ -18,31 +18,21 @@ const VacanciesPage: FC = () => {
     paginatedVacancies,
     searchParams,
     currentPage,
-    salaryFrom,
     isLoading,
-    salaryTo,
     pages,
     handleClickArrowDownBtn,
     handleClickArrowUpBtn,
     onChangeSearchParams,
-    onChangeSalaryValue,
     handleVacancyClick,
     setCurrentPage,
-    setSalaryFrom,
-    setSalaryTo,
   } = useSearchPage()
 
   return (
     <Layout>
       <div className={styles.wrapper}>
         <VacanciesForm
-          salaryFrom={salaryFrom}
-          salaryTo={salaryTo}
           handleClickArrowDownBtn={handleClickArrowDownBtn}
           handleClickArrowUpBtn={handleClickArrowUpBtn}
-          onChangeSalaryValue={onChangeSalaryValue}
-          setSalaryFrom={setSalaryFrom}
-          setSalaryTo={setSalaryTo}
         />
         <div className={styles.searchBlock}>
           <div className={styles.searchWrapper}>

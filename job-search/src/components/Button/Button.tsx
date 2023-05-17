@@ -5,16 +5,23 @@ interface IButtonProps {
   content: string
   isDisabled?: boolean
   handleClick?: () => void
+  type?: 'submit'
 }
 
 const Button: FC<IButtonProps> = ({
+  isDisabled,
   className,
   content,
-  isDisabled,
+  type,
   handleClick,
 }) => {
   return (
-    <button className={className} disabled={isDisabled} onClick={handleClick}>
+    <button
+      className={className}
+      disabled={isDisabled}
+      onClick={handleClick}
+      type={type}
+    >
       {content}
     </button>
   )

@@ -1,4 +1,5 @@
 import { Dispatch, FC, SetStateAction } from 'react'
+import { Controller } from 'react-hook-form'
 
 import close from 'assets/icons/close.svg'
 import arrow from 'assets/icons/down.svg'
@@ -11,8 +12,6 @@ import { useVacanciesForm } from './hooks'
 import styles from './VacanciesForm.module.scss'
 
 interface IVacanciesFormProps {
-  salaryFrom: string
-  salaryTo: string
   handleClickArrowDownBtn: (
     salary: string,
     setSalary: Dispatch<SetStateAction<string>>,
@@ -21,28 +20,13 @@ interface IVacanciesFormProps {
     salary: string,
     setSalary: Dispatch<SetStateAction<string>>,
   ) => void
-  onChangeSalaryValue: (
-    event: {
-      target: {
-        value: SetStateAction<string>
-      }
-    },
-    setSalary: Dispatch<SetStateAction<string>>,
-  ) => void
-  setSalaryFrom: Dispatch<SetStateAction<string>>
-  setSalaryTo: Dispatch<SetStateAction<string>>
 }
 
 const VacanciesForm: FC<IVacanciesFormProps> = ({
-  salaryFrom,
-  salaryTo,
   handleClickArrowDownBtn,
   handleClickArrowUpBtn,
-  onChangeSalaryValue,
-  setSalaryFrom,
-  setSalaryTo,
 }) => {
-  const { onSubmit, handleSubmit } = useVacanciesForm()
+  const { control, onSubmit, handleSubmit } = useVacanciesForm()
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.filterBlock}>
@@ -55,58 +39,78 @@ const VacanciesForm: FC<IVacanciesFormProps> = ({
       </div>
       <div className={styles.industryBlock}>
         <h4 className={styles.subtitle}>Отрасль</h4>
-        <InputSelect />
+        <InputSelect control={control} />
       </div>
       <div className={styles.salaryBlock}>
         <h4 className={styles.subtitle}>Оклад</h4>
         <div className={styles.salaryWrapper}>
-          <input
-            className={styles.salary}
-            onChange={(event) => onChangeSalaryValue(event, setSalaryFrom)}
-            value={salaryFrom}
-            type="number"
-            placeholder="От"
+          <Controller
+            name="payment_from"
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <>
+                <input
+                  className={styles.salary}
+                  onChange={onChange}
+                  value={value}
+                  type="number"
+                  placeholder="От"
+                />
+                <div className={styles.arrowBlock}>
+                  <img
+                    className={styles.arrowUp}
+                    onClick={() => handleClickArrowUpBtn(value, onChange)}
+                    src={arrow}
+                    alt="arrowUp"
+                  />
+                  <img
+                    className={styles.arrowDown}
+                    onClick={() => handleClickArrowDownBtn(value, onChange)}
+                    src={arrow}
+                    alt="arrowDown"
+                  />
+                </div>
+              </>
+            )}
           />
-          <div className={styles.arrowBlock}>
-            <img
-              className={styles.arrowUp}
-              onClick={() => handleClickArrowUpBtn(salaryFrom, setSalaryFrom)}
-              src={arrow}
-              alt="arrowUp"
-            />
-            <img
-              className={styles.arrowDown}
-              onClick={() => handleClickArrowDownBtn(salaryFrom, setSalaryFrom)}
-              src={arrow}
-              alt="arrowDown"
-            />
-          </div>
         </div>
         <div className={styles.salaryWrapper}>
-          <input
-            className={styles.salary}
-            onChange={(event) => onChangeSalaryValue(event, setSalaryTo)}
-            value={salaryTo}
-            type="number"
-            placeholder="До"
+          <Controller
+            name="payment_to"
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <>
+                <input
+                  className={styles.salary}
+                  onChange={onChange}
+                  value={value}
+                  type="number"
+                  placeholder="До"
+                />
+                <div className={styles.arrowBlock}>
+                  <img
+                    className={styles.arrowUp}
+                    onClick={() => handleClickArrowUpBtn(value, onChange)}
+                    src={arrow}
+                    alt="arrowUp"
+                  />
+                  <img
+                    className={styles.arrowDown}
+                    onClick={() => handleClickArrowDownBtn(value, onChange)}
+                    src={arrow}
+                    alt="arrowDown"
+                  />
+                </div>
+              </>
+            )}
           />
-          <div className={styles.arrowBlock}>
-            <img
-              className={styles.arrowUp}
-              onClick={() => handleClickArrowUpBtn(salaryTo, setSalaryTo)}
-              src={arrow}
-              alt="arrowUp"
-            />
-            <img
-              className={styles.arrowDown}
-              onClick={() => handleClickArrowDownBtn(salaryTo, setSalaryTo)}
-              src={arrow}
-              alt="arrowDown"
-            />
-          </div>
         </div>
       </div>
-      <Button className={styles.filterButton} content="Применить" />
+      <Button
+        className={styles.filterButton}
+        content="Применить"
+        type="submit"
+      />
     </form>
   )
 }
