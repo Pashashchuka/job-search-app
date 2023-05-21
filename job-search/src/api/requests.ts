@@ -4,6 +4,7 @@ import {
   TGetAccessToken,
   TGetAllVacancies,
   TGetCatalogues,
+  TGetFilteredVacancies,
   TGetVacancy,
 } from './types'
 
@@ -74,6 +75,25 @@ export const getCatalogues: TGetCatalogues = async () => {
     })
     const catalogues = data.map(({ title }: { title: string }) => title)
     return catalogues
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+export const getFilteredVacancies: TGetFilteredVacancies = async (
+  formValues,
+) => {
+  try {
+    const { data } = await axios.get(
+      `${VACANCIES_URL}?order_field=payment&&payment_from=${formValues.payment_from}&payment_to=${formValues.payment_to}&catalogues=${formValues.catalogues}`,
+      {
+        headers: {
+          'x-secret-key': secretKey,
+          'X-Api-App-Id': clientSecret,
+        },
+      },
+    )
+    return data.objects
   } catch (error) {
     throw new Error(error)
   }

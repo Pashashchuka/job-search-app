@@ -1,3 +1,4 @@
+import { FormValues } from 'pages/VacanciesPage/VacanciesForm'
 export interface IVacancy {
   profession: string
   firm_name: string
@@ -22,3 +23,7 @@ export type TGetAllVacancies = () => Promise<IVacancy[]>
 export type TGetVacancy = (id: string) => Promise<IVacancy>
 
 export type TGetCatalogues = () => Promise<string[]>
+
+export type TGetFilteredVacancies = (
+  formValues: FormValues,
+) => Promise<IVacancy[]>
