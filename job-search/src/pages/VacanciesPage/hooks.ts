@@ -23,7 +23,6 @@ export const useVacanciesPage = () => {
 
   const favVacancies = JSON.parse(localStorage.getItem('favVacancies')) || []
   const defaultCatalogues = JSON.parse(localStorage.getItem('catalogues'))
-  const prevFilterData = JSON.parse(localStorage.getItem('filterData'))
 
   const [vacancies, setVacancies] = useState<IVacancy[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -31,10 +30,10 @@ export const useVacanciesPage = () => {
 
   const { control, handleSubmit, reset } = useForm({
     defaultValues: {
-      catalogues: prevFilterData ? prevFilterData.catalogues : '',
-      payment_from: prevFilterData ? prevFilterData.payment_from : '',
-      payment_to: prevFilterData ? prevFilterData.payment_to : '',
-      keyword: prevFilterData ? prevFilterData.keyword : '',
+      catalogues: '',
+      payment_from: '',
+      payment_to: '',
+      keyword: '',
     },
   })
 
@@ -58,7 +57,6 @@ export const useVacanciesPage = () => {
   }, [])
 
   const onSubmit = async (data: FormValues) => {
-    localStorage.setItem('filterData', JSON.stringify(data))
     setIsLoading(true)
 
     const newFilteredVacancies = await getFilteredVacancies({
@@ -76,7 +74,6 @@ export const useVacanciesPage = () => {
   }
 
   const handleClickResetBtn = async () => {
-    localStorage.removeItem('filterData')
     reset(resetValues)
     setIsLoading(true)
 
