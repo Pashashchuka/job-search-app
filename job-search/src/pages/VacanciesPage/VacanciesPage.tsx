@@ -14,6 +14,7 @@ import Input from 'components/Input'
 import { useVacanciesPage } from './hooks'
 
 import styles from './VacanciesPage.module.scss'
+import { Controller } from 'react-hook-form'
 
 const VacanciesPage: FC = () => {
   const {
@@ -78,21 +79,36 @@ const VacanciesPage: FC = () => {
           />
         </form>
         <div className={styles.searchBlock}>
-          <div className={styles.searchWrapper}>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className={styles.searchWrapper}
+          >
             <div className={styles.inputBlock}>
               <img
                 className={styles.searchIcon}
                 src={search}
                 alt="searchIcon"
               />
-              <input
-                className={styles.search}
-                type="text"
-                placeholder="Введите название вакансии"
+              <Controller
+                name="keyword"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <input
+                    className={styles.search}
+                    onChange={onChange}
+                    value={value}
+                    type="text"
+                    placeholder="Введите название вакансии"
+                  />
+                )}
               />
             </div>
-            <Button className={styles.findButton} content="Поиск" />
-          </div>
+            <Button
+              className={styles.findButton}
+              content="Поиск"
+              type="submit"
+            />
+          </form>
           {isLoading ? (
             <Loader />
           ) : (

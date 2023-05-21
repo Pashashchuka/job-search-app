@@ -15,6 +15,7 @@ export interface FormValues {
   catalogues: string
   payment_from: string
   payment_to: string
+  keyword: string
 }
 
 export const useVacanciesPage = () => {
@@ -22,6 +23,7 @@ export const useVacanciesPage = () => {
 
   const favVacancies = JSON.parse(localStorage.getItem('favVacancies')) || []
   const defaultCatalogues = JSON.parse(localStorage.getItem('catalogues'))
+  const prevFilterData = JSON.parse(localStorage.getItem('filterData'))
 
   const [vacancies, setVacancies] = useState<IVacancy[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -29,9 +31,10 @@ export const useVacanciesPage = () => {
 
   const { control, handleSubmit, reset } = useForm({
     defaultValues: {
-      catalogues: '',
-      payment_from: '',
-      payment_to: '',
+      catalogues: prevFilterData ? prevFilterData.catalogues : '',
+      payment_from: prevFilterData ? prevFilterData.payment_from : '',
+      payment_to: prevFilterData ? prevFilterData.payment_to : '',
+      keyword: prevFilterData ? prevFilterData.keyword : '',
     },
   })
 
@@ -39,6 +42,7 @@ export const useVacanciesPage = () => {
     catalogues: '',
     payment_from: '',
     payment_to: '',
+    keyword: '',
   }
 
   useEffect(() => {
