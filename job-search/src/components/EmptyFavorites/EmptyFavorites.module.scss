@@ -34,6 +34,10 @@
 }
 
 @media (max-width: 369px) {
+  .block {
+    margin-top: 60px;
+  }
+
   .title {
     font: var(--font-text-2);
     font-weight: 700;
