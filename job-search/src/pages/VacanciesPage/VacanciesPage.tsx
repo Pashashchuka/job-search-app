@@ -3,6 +3,7 @@ import { FC } from 'react'
 import search from 'assets/icons/search.svg'
 import close from 'assets/icons/close.svg'
 
+import EmptyVacancies from 'components/EmptyVacancies'
 import InputSelect from 'components/InputSelect'
 import Pagintaion from 'components/Pagintaion'
 import Vacancy from 'components/Vacancy'
@@ -31,6 +32,8 @@ const VacanciesPage: FC = () => {
     handleSubmit,
     onSubmit,
   } = useVacanciesPage()
+
+  console.log(paginatedVacancies)
 
   return (
     <Layout>
@@ -114,13 +117,17 @@ const VacanciesPage: FC = () => {
           ) : (
             <>
               <div className={styles.vacancyWrapper}>
-                {paginatedVacancies.map((vacancy) => (
-                  <Vacancy
-                    key={vacancy.id}
-                    vacancy={vacancy}
-                    handleVacancyClick={handleVacancyClick}
-                  />
-                ))}
+                {paginatedVacancies.length ? (
+                  paginatedVacancies.map((vacancy) => (
+                    <Vacancy
+                      key={vacancy.id}
+                      vacancy={vacancy}
+                      handleVacancyClick={handleVacancyClick}
+                    />
+                  ))
+                ) : (
+                  <EmptyVacancies />
+                )}
               </div>
               <Pagintaion
                 pages={pages}
