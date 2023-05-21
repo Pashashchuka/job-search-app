@@ -4,7 +4,7 @@
   flex-direction: column;
   gap: 20px;
   justify-content: center;
-  padding: 40px;
+  padding: 40px 0;
   width: 100%;
 }
 
@@ -18,7 +18,8 @@
   justify-content: flex-start;
   gap: 20px;
   padding: 24px;
-  width: 773px;
+  max-width: 773px;
+  width: 100%;
 
   & p {
     color: var(--black-color);
@@ -29,5 +30,21 @@
     color: var(--black-color);
     font: var(--font-text-2);
     margin-left: 24px;
+  }
+}
+
+@media (max-width: 522px) {
+  .block {
+    & p {
+      color: var(--black-color);
+      font: var(--font-text-3);
+      font-weight: 700;
+    }
+
+    & li {
+      color: var(--black-color);
+      font: var(--font-text-4);
+      margin-left: 24px;
+    }
   }
 }
