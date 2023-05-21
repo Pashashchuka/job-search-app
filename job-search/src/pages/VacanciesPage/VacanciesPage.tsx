@@ -33,8 +33,6 @@ const VacanciesPage: FC = () => {
     onSubmit,
   } = useVacanciesPage()
 
-  console.log(paginatedVacancies)
-
   return (
     <Layout>
       <div className={styles.wrapper}>
