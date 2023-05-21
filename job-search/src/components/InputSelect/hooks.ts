@@ -8,7 +8,13 @@ export const useInputSelect = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await getCatalogues()
-      setCatalogues(response)
+      localStorage.setItem('catalogues', JSON.stringify(response))
+
+      const currentCatalogues = response.map(
+        ({ title }: { title: string }) => title,
+      )
+
+      setCatalogues(currentCatalogues)
     }
 
     fetchData()

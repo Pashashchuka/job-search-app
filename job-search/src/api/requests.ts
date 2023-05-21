@@ -73,8 +73,7 @@ export const getCatalogues: TGetCatalogues = async () => {
         'X-Api-App-Id': clientSecret,
       },
     })
-    const catalogues = data.map(({ title }: { title: string }) => title)
-    return catalogues
+    return data
   } catch (error) {
     throw new Error(error)
   }
