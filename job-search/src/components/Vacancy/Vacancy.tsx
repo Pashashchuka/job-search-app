@@ -27,12 +27,16 @@ const Vacancy: FC<IVacancyProps> = ({ vacancy, handleVacancyClick }) => {
     handleStarClick,
   } = useVacancy()
 
+  const vacancyDataElem = `vacancy-${vacancy.id}`
+  const starDataElem = `vacancy-${vacancy.id}-shortlist-button`
+
   return (
     <>
       {isLastVacancy ? (
         <EmptyFavorites />
       ) : (
         <div
+          data-elem={vacancyDataElem}
           className={isHiddenVacancy ? styles.hidden : styles.wrapper}
           onClick={() => handleVacancyClick(vacancy.id)}
         >
@@ -82,6 +86,7 @@ const Vacancy: FC<IVacancyProps> = ({ vacancy, handleVacancyClick }) => {
               handleStarClick(vacancy)
             }}
             alt="star"
+            data-elem={starDataElem}
           />
           <img
             className={
@@ -95,6 +100,7 @@ const Vacancy: FC<IVacancyProps> = ({ vacancy, handleVacancyClick }) => {
               handleFillStarClick(vacancy)
             }}
             alt="star"
+            data-elem={starDataElem}
           />
         </div>
       )}

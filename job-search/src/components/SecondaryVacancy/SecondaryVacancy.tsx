@@ -18,8 +18,11 @@ const SecondaryVacancy: FC<ISecondaryVacancyProps> = ({ vacancy }) => {
   const { isFillStar, isDefaultStar, handleFillStarClick, handleStarClick } =
     useSecondaryVacancy()
 
+  const vacancyDataElem = `vacancy-${vacancy.id}`
+  const starDataElem = `vacancy-${vacancy.id}-shortlist-button`
+
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} data-elem={vacancyDataElem}>
       <div className={styles.vacancyBlock}>
         <h2 className={styles.title}>{vacancy.profession}</h2>
         <div className={styles.infoBlock}>
@@ -63,6 +66,7 @@ const SecondaryVacancy: FC<ISecondaryVacancyProps> = ({ vacancy }) => {
           handleStarClick(vacancy)
         }}
         alt="star"
+        data-elem={starDataElem}
       />
       <img
         className={
@@ -73,6 +77,7 @@ const SecondaryVacancy: FC<ISecondaryVacancyProps> = ({ vacancy }) => {
           handleFillStarClick(vacancy)
         }}
         alt="star"
+        data-elem={starDataElem}
       />
     </div>
   )

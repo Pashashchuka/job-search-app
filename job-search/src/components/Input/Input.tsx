@@ -8,6 +8,7 @@ import styles from './Input.module.scss'
 interface IInputProps {
   control: Control<any>
   placeholder: string
+  dataElem: string
   name: any
   handleArrowUpClick: (
     salary: string,
@@ -23,6 +24,7 @@ const Input: FC<IInputProps> = ({
   placeholder,
   control,
   name,
+  dataElem,
   handleArrowDownClick,
   handleArrowUpClick,
 }) => {
@@ -38,6 +40,7 @@ const Input: FC<IInputProps> = ({
             value={value}
             type="number"
             placeholder={placeholder}
+            data-elem={dataElem}
           />
           <div className={styles.arrowBlock}>
             <img

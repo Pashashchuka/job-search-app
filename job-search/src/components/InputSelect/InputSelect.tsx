@@ -20,6 +20,7 @@ const InputSelect: FC<IInputSelectProps> = ({ control }) => {
       control={control}
       render={({ field: { onChange, value } }) => (
         <Select
+          data-elem="industry-select"
           placeholder="Выберете отрасль"
           rightSection={<IconChevronDown className={styles.arrow} />}
           rightSectionWidth={30}

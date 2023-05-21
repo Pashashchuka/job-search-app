@@ -62,6 +62,7 @@ const VacanciesPage: FC = () => {
                   handleArrowUpClick={handleClickArrowUpBtn}
                   handleArrowDownClick={handleClickArrowDownBtn}
                   placeholder="От"
+                  dataElem="salary-from-input"
                 />
               </div>
               <div className={styles.salaryWrapper}>
@@ -71,6 +72,7 @@ const VacanciesPage: FC = () => {
                   handleArrowUpClick={handleClickArrowUpBtn}
                   handleArrowDownClick={handleClickArrowDownBtn}
                   placeholder="До"
+                  dataElem="salary-to-input"
                 />
               </div>
             </div>
@@ -79,6 +81,7 @@ const VacanciesPage: FC = () => {
             className={styles.filterButton}
             content="Применить"
             type="submit"
+            dataElem="search-button"
           />
         </form>
         <div className={styles.searchBlock}>
@@ -102,6 +105,7 @@ const VacanciesPage: FC = () => {
                     value={value}
                     type="text"
                     placeholder="Введите название вакансии"
+                    data-elem="search-input"
                   />
                 )}
               />
@@ -110,6 +114,7 @@ const VacanciesPage: FC = () => {
               className={styles.findButton}
               content="Поиск"
               type="submit"
+              dataElem="search-button"
             />
           </form>
           {isLoading ? (
