@@ -15,3 +15,10 @@
   color: var(--dark-gray-color);
   font: var(--font-h5);
 }
+
+@media (max-width: 369px) {
+  .title {
+    font: var(--font-text-2);
+    font-weight: 700;
+  }
+}
