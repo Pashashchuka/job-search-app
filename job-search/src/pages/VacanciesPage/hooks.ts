@@ -113,8 +113,12 @@ export const useVacanciesPage = () => {
     salary: string,
     setSalary: Dispatch<SetStateAction<string>>,
   ) => {
-    const newSalary = parseFloat(salary) + 1
-    setSalary(newSalary.toString())
+    if (salary === '') {
+      setSalary('1')
+    } else {
+      const newSalary = parseFloat(salary) + 1
+      setSalary(newSalary.toString())
+    }
   }
 
   const handleClickArrowDownBtn = (
