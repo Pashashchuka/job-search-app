@@ -163,7 +163,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  height: 620px;
+  min-height: 620px;
   margin-bottom: 40px;
   max-width: 773px;
   width: 100%;
@@ -224,7 +224,7 @@
   }
 
   .vacancyWrapper {
-    height: 450px;
+    min-height: 450px;
   }
 }
 
