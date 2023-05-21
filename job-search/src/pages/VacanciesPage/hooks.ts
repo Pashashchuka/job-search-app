@@ -12,7 +12,6 @@ export const useVacanciesPage = () => {
 
   const [vacancies, setVacancies] = useState<IVacancy[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [searchParams, setSearchParams] = useState<string>('')
   const [currentPage, setCurrentPage] = useState<number>(1)
 
   useEffect(() => {
@@ -43,25 +42,15 @@ export const useVacanciesPage = () => {
     )
   })
 
-  const searchVacancies = vacanciesWithoutFavVacancies.filter((vacancy) =>
-    vacancy.profession.toLowerCase().includes(searchParams.toLowerCase()),
-  )
-
-  const onChangeSearchParams = (event: {
-    target: { value: SetStateAction<string> }
-  }) => {
-    setSearchParams(event.target.value)
-  }
-
   const indexOfLastVacancy = currentPage * 4
   const indexOfFirstVacancy = indexOfLastVacancy - 4
 
-  const paginatedVacancies = searchVacancies.slice(
+  const paginatedVacancies = vacanciesWithoutFavVacancies.slice(
     indexOfFirstVacancy,
     indexOfLastVacancy,
   )
 
-  const pages = Math.ceil(searchVacancies.length / 4)
+  const pages = Math.ceil(vacanciesWithoutFavVacancies.length / 4)
 
   const handleClickArrowUpBtn = (
     salary: string,
@@ -87,11 +76,9 @@ export const useVacanciesPage = () => {
     pages,
     isLoading,
     currentPage,
-    searchParams,
     paginatedVacancies,
     setCurrentPage,
     handleVacancyClick,
-    onChangeSearchParams,
     handleClickArrowUpBtn,
     handleClickArrowDownBtn,
   }

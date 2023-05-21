@@ -16,13 +16,11 @@ import VacanciesForm from './VacanciesForm'
 const VacanciesPage: FC = () => {
   const {
     paginatedVacancies,
-    searchParams,
     currentPage,
     isLoading,
     pages,
     handleClickArrowDownBtn,
     handleClickArrowUpBtn,
-    onChangeSearchParams,
     handleVacancyClick,
     setCurrentPage,
   } = useVacanciesPage()
@@ -46,8 +44,6 @@ const VacanciesPage: FC = () => {
                 className={styles.search}
                 type="text"
                 placeholder="Введите название вакансии"
-                value={searchParams}
-                onChange={(event) => onChangeSearchParams(event)}
               />
             </div>
             <Button className={styles.findButton} content="Поиск" />
