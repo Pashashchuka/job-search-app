@@ -8,7 +8,7 @@ import {
   TGetVacancy,
 } from './types'
 
-const BASE_URL = 'https://startup-summer-2023-proxy.onrender.com/2.0'
+const BASE_URL = 'https://startup-summer-proxy-production.up.railway.app/2.0'
 const AUTHORIZATION_URL = `${BASE_URL}/oauth2/password`
 const CATALOGUES_URL = `${BASE_URL}/catalogues/`
 const VACANCIES_URL = `${BASE_URL}/vacancies/`

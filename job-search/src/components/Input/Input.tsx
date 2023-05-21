@@ -3,7 +3,7 @@ import { Control, Controller } from 'react-hook-form'
 
 import arrow from 'assets/icons/down.svg'
 
-import { FormValues } from 'pages/VacanciesPage/VacanciesForm'
+import { FormValues } from 'pages/VacanciesPage/hooks'
 
 import styles from './Input.module.scss'
 

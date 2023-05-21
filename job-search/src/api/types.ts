@@ -1,4 +1,4 @@
-import { FormValues } from 'pages/VacanciesPage/VacanciesForm'
+import { FormValues } from 'pages/VacanciesPage/hooks'
 
 export interface ICatalogue {
   title: string

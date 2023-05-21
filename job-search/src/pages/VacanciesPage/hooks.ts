@@ -1,18 +1,45 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 
-import { getAllVacancies, IVacancy } from 'api'
+import {
+  getAllVacancies,
+  IVacancy,
+  getFilteredVacancies,
+  ICatalogue,
+} from 'api'
 
 import { PATHS } from 'router/paths'
+
+export interface FormValues {
+  catalogues: string
+  payment_from: string
+  payment_to: string
+}
 
 export const useVacanciesPage = () => {
   const navigate = useNavigate()
 
   const favVacancies = JSON.parse(localStorage.getItem('favVacancies')) || []
+  const defaultCatalogues = JSON.parse(localStorage.getItem('catalogues'))
 
   const [vacancies, setVacancies] = useState<IVacancy[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [currentPage, setCurrentPage] = useState<number>(1)
+
+  const { control, handleSubmit, reset } = useForm({
+    defaultValues: {
+      catalogues: '',
+      payment_from: '',
+      payment_to: '',
+    },
+  })
+
+  const resetValues = {
+    catalogues: '',
+    payment_from: '',
+    payment_to: '',
+  }
 
   useEffect(() => {
     setIsLoading(true)
@@ -25,6 +52,33 @@ export const useVacanciesPage = () => {
 
     fetchData()
   }, [])
+
+  const onSubmit = async (data: FormValues) => {
+    setIsLoading(true)
+
+    const newFilteredVacancies = await getFilteredVacancies({
+      ...data,
+      catalogues:
+        defaultCatalogues.length && data.catalogues
+          ? defaultCatalogues.find(
+              (catalogue: ICatalogue) => catalogue.title === data.catalogues,
+            ).key
+          : '',
+    })
+
+    setVacancies(newFilteredVacancies)
+    setIsLoading(false)
+  }
+
+  const handleClickResetBtn = async () => {
+    reset(resetValues)
+    setIsLoading(true)
+
+    const response = await getAllVacancies()
+    setVacancies(response)
+
+    setIsLoading(false)
+  }
 
   const handleVacancyClick = (id: number) => {
     localStorage.setItem('vacancyId', JSON.stringify(id))
@@ -74,11 +128,15 @@ export const useVacanciesPage = () => {
 
   return {
     pages,
+    control,
     isLoading,
     currentPage,
     paginatedVacancies,
+    onSubmit,
+    handleSubmit,
     setCurrentPage,
     handleVacancyClick,
+    handleClickResetBtn,
     handleClickArrowUpBtn,
     handleClickArrowDownBtn,
   }

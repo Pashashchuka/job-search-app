@@ -3,7 +3,7 @@ import { Control, Controller } from 'react-hook-form'
 import { IconChevronDown } from '@tabler/icons-react'
 import { Select } from '@mantine/core'
 
-import { FormValues } from 'pages/VacanciesPage/VacanciesForm'
+import { FormValues } from 'pages/VacanciesPage/hooks'
 
 import { useInputSelect } from './hooks'
 
