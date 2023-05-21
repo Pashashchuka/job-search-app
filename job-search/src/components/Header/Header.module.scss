@@ -53,3 +53,47 @@
   font-weight: 500;
   text-decoration: none;
 }
+
+@media (max-width: 1161px) {
+  .wrapper {
+    justify-content: space-between;
+    padding: 0 100px;
+  }
+
+  .logoBlock {
+    position: static;
+  }
+}
+
+@media (max-width: 803px) {
+  .wrapper {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 583px) {
+  .wrapper {
+    padding: 0 10px;
+  }
+
+  .logoImg {
+    height: 20px;
+    width: 20px;
+  }
+
+  .logoTitle {
+    font: var(--font-h3);
+  }
+
+  .nav {
+    gap: 20px;
+  }
+
+  .link {
+    font: var(--font-text-4);
+  }
+
+  .activeLink {
+    font: var(--font-text-4);
+  }
+}

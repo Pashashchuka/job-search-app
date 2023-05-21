@@ -9,7 +9,8 @@
   min-height: 137px;
   justify-content: space-between;
   padding: 24px;
-  width: 773px;
+  max-width: 773px;
+  width: 100%;
 }
 
 .vacancyBlock {
@@ -74,6 +75,52 @@
   width: 22px;
 }
 
-.hidden{
+.hidden {
   display: none;
+}
+
+@media (max-width: 803px) {
+  .title {
+    font: var(--font-h3);
+  }
+
+  .salary {
+    font: var(--font-text-3);
+  }
+
+  .type,
+  .city {
+    font: var(--font-text-3);
+  }
+}
+
+@media (max-width: 522px) {
+  .wrapper {
+    min-height: 100px;
+    padding: 12px;
+  }
+
+  .title {
+    font: var(--font-text-4);
+    font-weight: 700;
+  }
+
+  .salary {
+    font: var(--font-text-5);
+  }
+
+  .type,
+  .city {
+    font: var(--font-text-5);
+  }
+
+  .starIcon {
+    height: 15px;
+    width: 15px;
+  }
+
+  .fillStarIcon {
+    height: 15px;
+    width: 15px;
+  }
 }

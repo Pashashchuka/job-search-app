@@ -39,3 +39,9 @@ input[type='number']::-webkit-inner-spin-button {
 .arrowUp {
   transform: rotate(180deg);
 }
+
+@media (max-width: 803px) {
+  .salary {
+    width: 230px;
+  }
+}

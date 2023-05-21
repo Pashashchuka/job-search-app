@@ -48,29 +48,31 @@ const VacanciesPage: FC = () => {
               <img className={styles.closeImg} src={close} alt="close" />
             </button>
           </div>
-          <div className={styles.industryBlock}>
-            <h4 className={styles.subtitle}>Отрасль</h4>
-            <InputSelect control={control} />
-          </div>
-          <div className={styles.salaryBlock}>
-            <h4 className={styles.subtitle}>Оклад</h4>
-            <div className={styles.salaryWrapper}>
-              <Input
-                name="payment_from"
-                control={control}
-                handleArrowUpClick={handleClickArrowUpBtn}
-                handleArrowDownClick={handleClickArrowDownBtn}
-                placeholder="От"
-              />
+          <div className={styles.inputsWrapper}>
+            <div className={styles.industryBlock}>
+              <h4 className={styles.subtitle}>Отрасль</h4>
+              <InputSelect control={control} />
             </div>
-            <div className={styles.salaryWrapper}>
-              <Input
-                name="payment_to"
-                control={control}
-                handleArrowUpClick={handleClickArrowUpBtn}
-                handleArrowDownClick={handleClickArrowDownBtn}
-                placeholder="До"
-              />
+            <div className={styles.salaryBlock}>
+              <h4 className={styles.subtitle}>Оклад</h4>
+              <div className={styles.salaryWrapper}>
+                <Input
+                  name="payment_from"
+                  control={control}
+                  handleArrowUpClick={handleClickArrowUpBtn}
+                  handleArrowDownClick={handleClickArrowDownBtn}
+                  placeholder="От"
+                />
+              </div>
+              <div className={styles.salaryWrapper}>
+                <Input
+                  name="payment_to"
+                  control={control}
+                  handleArrowUpClick={handleClickArrowUpBtn}
+                  handleArrowDownClick={handleClickArrowDownBtn}
+                  placeholder="До"
+                />
+              </div>
             </div>
           </div>
           <Button
