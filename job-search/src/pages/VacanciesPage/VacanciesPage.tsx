@@ -114,24 +114,26 @@ const VacanciesPage: FC = () => {
             <Loader />
           ) : (
             <>
-              <div className={styles.vacancyWrapper}>
-                {paginatedVacancies.length ? (
-                  paginatedVacancies.map((vacancy) => (
-                    <Vacancy
-                      key={vacancy.id}
-                      vacancy={vacancy}
-                      handleVacancyClick={handleVacancyClick}
-                    />
-                  ))
-                ) : (
-                  <EmptyVacancies />
-                )}
-              </div>
-              <Pagintaion
-                pages={pages}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
-              />
+              {paginatedVacancies.length ? (
+                <>
+                  <div className={styles.vacancyWrapper}>
+                    {paginatedVacancies.map((vacancy) => (
+                      <Vacancy
+                        key={vacancy.id}
+                        vacancy={vacancy}
+                        handleVacancyClick={handleVacancyClick}
+                      />
+                    ))}
+                  </div>
+                  <Pagintaion
+                    pages={pages}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                  />
+                </>
+              ) : (
+                <EmptyVacancies />
+              )}
             </>
           )}
         </div>
