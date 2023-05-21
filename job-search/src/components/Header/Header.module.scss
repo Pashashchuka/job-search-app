@@ -1,0 +1,99 @@
+.wrapper {
+  align-items: center;
+  background-color: var(--white-color);
+  display: flex;
+  flex-direction: row;
+  height: 84px;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.logoBlock {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  left: 157px;
+  position: absolute;
+  top: 24px;
+}
+
+.logoImg {
+  height: 30px;
+  width: 30px;
+}
+
+.logoTitle {
+  color: var(--black-color);
+  font: var(--font-text-1);
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+}
+
+.link {
+  color: var(--black-color);
+  font: var(--font-text-2);
+  text-decoration: none;
+
+  &:active {
+    color: var(--light-blue-color);
+    font: var(--font-text-2);
+    font-weight: 500;
+  }
+}
+
+.activeLink {
+  color: var(--light-blue-color);
+  font: var(--font-text-2);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+@media (max-width: 1161px) {
+  .wrapper {
+    justify-content: space-between;
+    padding: 0 100px;
+  }
+
+  .logoBlock {
+    position: static;
+  }
+}
+
+@media (max-width: 803px) {
+  .wrapper {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 583px) {
+  .wrapper {
+    padding: 0 10px;
+  }
+
+  .logoImg {
+    height: 20px;
+    width: 20px;
+  }
+
+  .logoTitle {
+    font: var(--font-h3);
+  }
+
+  .nav {
+    gap: 20px;
+  }
+
+  .link {
+    font: var(--font-text-4);
+  }
+
+  .activeLink {
+    font: var(--font-text-4);
+  }
+}

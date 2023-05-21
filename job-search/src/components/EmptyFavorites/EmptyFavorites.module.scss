@@ -1,0 +1,45 @@
+.block {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 120px;
+}
+
+.person {
+  height: 230px;
+  width: 240px;
+}
+
+.title {
+  color: var(--dark-gray-color);
+  font: var(--font-h5);
+}
+
+.button {
+  background-color: var(--blue-color-100);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--blue-color-600);
+  font: var(--font-text-3);
+  font-weight: 600;
+  height: 42px;
+  transition: all 0.5s ease-in-out;
+  width: 164px;
+
+  &:hover {
+    transform: scale(0.95);
+  }
+}
+
+@media (max-width: 369px) {
+  .block {
+    margin-top: 60px;
+  }
+
+  .title {
+    font: var(--font-text-2);
+    font-weight: 700;
+  }
+}

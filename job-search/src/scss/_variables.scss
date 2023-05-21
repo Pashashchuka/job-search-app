@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --light-gray-color: #f7f7f8;
+  --light-blue-color: #5e96fc;
+  --grey-color-600: #7b7c88;
+  --grey-color-500: #acadb9;
+  --grey-color-300: #d5d6dc;
+  --grey-color-200: #eaebed;
+  --white-color: #ffffff;
+  --black-color: #232134;
+  --dark-gray-color: #343a40;
+  --blue-color-100: #deecff;
+  --blue-color-600: #3b7cd3;
+
+  --font-family-poppins: 'Poppins', normal;
+  --font-family-inter: 'Inter', normal;
+
+  --font-h1: 600 64px var(--font-family-poppins);
+  --font-h2: 700 20px var(--font-family-inter);
+  --font-h3: 700 16px var(--font-family-inter);
+  --font-h4: 700 28px var(--font-family-inter);
+  --font-h5: 700 24px var(--font-family-inter);
+
+  --font-text-1: 600 24px var(--font-family-poppins);
+  --font-text-2: 400 16px var(--font-family-inter);
+  --font-text-3: 500 14px var(--font-family-inter);
+  --font-text-4: 500 12px var(--font-family-inter);
+  --font-text-5: 500 10px var(--font-family-inter);
+}

@@ -1,0 +1,65 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 44px;
+}
+
+.arrowBtn,
+.pageBtn,
+.pageBtnActive {
+  height: 32px;
+  width: 32px;
+}
+
+.arrowBtn {
+  background-color: var(--white-color);
+  border: 1px solid var(--grey-color-200);
+  cursor: pointer;
+
+  &:active {
+    background-color: var(--light-blue-color);
+    border: none;
+    color: var(--white-color);
+  }
+}
+
+.prevIcon {
+  height: 10px;
+  transform: rotate(90deg);
+  width: 10px;
+}
+
+.pageBtn {
+  background-color: var(--white-color);
+  border: 1px solid var(--grey-color-200);
+  cursor: pointer;
+  color: var(--black-color);
+  font: var(--font-text-2);
+
+  &:active {
+    background-color: var(--light-blue-color);
+    border: none;
+    color: var(--white-color);
+  }
+
+  &.active {
+    background-color: var(--light-blue-color);
+    border: none;
+    color: var(--white-color);
+  }
+}
+
+.pageBtnActive {
+  background-color: var(--light-blue-color);
+  border: none;
+  color: var(--white-color);
+  cursor: pointer;
+  font: var(--font-text-2);
+}
+
+.nextIcon {
+  height: 10px;
+  transform: rotate(-90deg);
+  width: 10px;
+}

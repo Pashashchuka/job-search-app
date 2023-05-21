@@ -1,0 +1,27 @@
+.block {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: 60px 0;
+}
+
+.person {
+  height: 230px;
+  width: 240px;
+}
+
+.title {
+  color: var(--dark-gray-color);
+  font: var(--font-h5);
+}
+
+@media (max-width: 369px) {
+  .title {
+    font: var(--font-text-3);
+    font-weight: 700;
+    max-width: 300px;
+    text-align: center;
+    width: 100%;
+  }
+}
