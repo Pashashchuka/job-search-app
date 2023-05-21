@@ -28,3 +28,14 @@
     scale: 0.9;
   }
 }
+
+@media (max-width: 620px) {
+  .title {
+    font: var(--font-h2);
+    font-weight: 700;
+  }
+
+  .text {
+    font: var(--font-text-4);
+  }
+}
