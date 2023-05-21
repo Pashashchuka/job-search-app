@@ -37,7 +37,11 @@ const VacanciesPage: FC = () => {
         <form onSubmit={handleSubmit(onSubmit)} className={styles.filterBlock}>
           <div className={styles.titleBlock}>
             <h3 className={styles.title}>Фильтры</h3>
-            <button className={styles.resetBtn} onClick={handleClickResetBtn}>
+            <button
+              type="reset"
+              className={styles.resetBtn}
+              onClick={handleClickResetBtn}
+            >
               <p className={styles.resetText}>Сбросить все</p>
               <img className={styles.closeImg} src={close} alt="close" />
             </button>

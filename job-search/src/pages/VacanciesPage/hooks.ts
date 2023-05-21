@@ -54,12 +54,13 @@ export const useVacanciesPage = () => {
   }, [])
 
   const onSubmit = async (data: FormValues) => {
+    localStorage.setItem('filterData', JSON.stringify(data))
     setIsLoading(true)
 
     const newFilteredVacancies = await getFilteredVacancies({
       ...data,
       catalogues:
-        defaultCatalogues.length && data.catalogues
+        defaultCatalogues && data.catalogues
           ? defaultCatalogues.find(
               (catalogue: ICatalogue) => catalogue.title === data.catalogues,
             ).key
@@ -71,6 +72,7 @@ export const useVacanciesPage = () => {
   }
 
   const handleClickResetBtn = async () => {
+    localStorage.removeItem('filterData')
     reset(resetValues)
     setIsLoading(true)
 
