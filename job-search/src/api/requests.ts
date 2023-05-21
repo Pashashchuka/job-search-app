@@ -84,7 +84,7 @@ export const getFilteredVacancies: TGetFilteredVacancies = async (
 ) => {
   try {
     const { data } = await axios.get(
-      `${VACANCIES_URL}?order_field=payment&&payment_from=${formValues.payment_from}&payment_to=${formValues.payment_to}&catalogues=${formValues.catalogues}`,
+      `${VACANCIES_URL}?keyword=${formValues.keyword}&order_field=payment&&payment_from=${formValues.payment_from}&payment_to=${formValues.payment_to}&catalogues=${formValues.catalogues}`,
       {
         headers: {
           'x-secret-key': secretKey,
